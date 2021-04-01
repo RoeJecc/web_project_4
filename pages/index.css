@@ -1,0 +1,154 @@
+@import url(../vendor/normalize.css);
+@import url(../vendor/fonts/fonts.css);
+
+.page {
+    max-width: 1280px;
+    background-color: #000000;
+    font-family: "Inter", sans-serif;
+    margin: 0 auto;
+    padding: 0;
+    color: white;
+}
+
+.header{
+    margin: 45px 200px 36px;
+    padding: 0;
+}
+
+.header__vector{
+}
+
+.header__line{
+    padding: 40px 0 0 0;
+    border-bottom: 1px solid #545454;
+    opacity: .7;
+}
+
+.content{
+    margin: 0 auto;
+    padding: 0;
+    width: 100%;
+}
+
+.profile{
+    margin: 0 200px 46px;
+    padding: 0;
+    max-height: 120px;
+    display: flex;
+    align-items: center;
+}
+
+.profile__avatar{
+    border-radius: 50%;
+    background-size: cover;
+    max-width: 120px;
+    max-height: 120px;
+}
+
+.profile__info{
+    margin-left: 30px;
+    width: 415px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.profile__name{
+    font-size: 42px;
+    line-height: 48px;
+    font-weight: 500;
+    margin-bottom: 16px;
+    width: fit-content;
+}
+
+.profile__occupation{
+    font-size: 18px;
+    line-height: 22px;
+}
+
+.profile__edit-button{
+    background-image: url(../images/EditButton.png);
+    background-position: center;
+    background-color: black;
+    background-repeat: no-repeat;
+    border: 1px solid white;
+    height: 24px;
+    width: 24px;
+    
+    margin-top: 15px;
+}
+
+.profile__add-button{
+    background-image: url(../images/AddButton.png);
+    background-position: center;
+    background-color: black;
+    background-repeat: no-repeat;
+    border: 1px solid white;
+    width: 150px;
+    height: 50px;
+    margin-left: auto;
+}
+
+
+.elements{ 
+    display: grid; 
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    grid-gap: 20px 17px;
+    justify-content: center;
+    margin: 0 200px 0;
+    padding: 0;
+} 
+
+.element{
+    display: flex;
+    flex-direction: column;
+    max-width: 282px;
+    align-items: center;
+    background-color: white;
+    border-radius: 10px;
+}
+
+.element__image{
+    width: 100%;
+}
+
+.element__info{
+    color: black;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0;
+    padding: 0 auto 0;
+    width: 246px;
+}
+
+.element__text{
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    font-size: 24px;
+    line-height: 29px;
+    font-weight: 900;
+}
+
+.element__button{
+    background-image: url(../images/ElementButton.png);
+    background-position: center;
+    background-color: white;
+    background-repeat: no-repeat;
+    width: 21px;
+    height: 19px;
+    border: none;
+}
+
+.footer{
+    margin: 68px 200px 60px;
+    padding: 0;
+}
+
+.footer__text{
+    font-size: 18px;
+    line-height: 22px;
+    color: #545454;
+}
