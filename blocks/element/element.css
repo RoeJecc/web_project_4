@@ -1,0 +1,13 @@
+@import url(./__image/element__image.css);
+@import url(./__info/element__info.css);
+@import url(./__text/element__text.css);
+@import url(./__button/element__button.css);
+
+.element{
+    display: flex;
+    flex-direction: column;
+    max-width: 282px;
+    align-items: center;
+    background-color: white;
+    border-radius: 10px;
+}

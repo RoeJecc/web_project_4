@@ -1,0 +1,9 @@
+.element__button{
+    background-image: url(../../../images/ElementButton.png);
+    background-position: center;
+    background-color: white;
+    background-repeat: no-repeat;
+    width: 21px;
+    height: 19px;
+    border: none;
+}
