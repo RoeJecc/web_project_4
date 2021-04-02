@@ -4,3 +4,11 @@
     max-width: 120px;
     max-height: 120px;
 }
+
+@media screen and (max-width: 550px){
+    .profile__avatar{
+        max-width: 169px;
+        max-height: 128px;
+    }
+    
+}

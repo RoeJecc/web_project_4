@@ -13,3 +13,19 @@
     display: flex;
     align-items: center;
 }
+
+@media screen and (max-width: 1120px){
+    .profile{
+        flex-direction: column;
+        align-self: center;
+        max-height: 286px;
+    }
+}
+
+@media screen and (max-width: 550px){
+    .profile{
+        margin: 0 0 36px;
+        width: 100%;
+    }
+    
+}
