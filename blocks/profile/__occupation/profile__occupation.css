@@ -1,6 +1,9 @@
 .profile__occupation{
     font-size: 18px;
     line-height: 22px;
+    font-weight: normal;
+    margin: 0;
+    padding: 0;
 }
 
 @media screen and (max-width: 550px){
