@@ -4,6 +4,7 @@
     font-weight: normal;
     margin: 0;
     padding: 0;
+    position: relative;
 }
 
 @media screen and (max-width: 550px){

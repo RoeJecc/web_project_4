@@ -3,7 +3,7 @@
     line-height: 48px;
     font-weight: 500;
     margin: 0 0 16px;
-    width: fit-content;
+    width: calc(100% - 25px);
     padding: 0;
 }
 
