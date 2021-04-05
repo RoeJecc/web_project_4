@@ -41,4 +41,4 @@ profileForm.addEventListener('submit', function (event) {
     } else {
         element.className = classe;
     }
-}
+};
