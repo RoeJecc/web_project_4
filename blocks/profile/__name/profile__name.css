@@ -13,5 +13,6 @@
         line-height: 27px;
         text-align: center;
         margin: 26px 0 14px;
+        width: calc(100% - 18px);
     }
 }

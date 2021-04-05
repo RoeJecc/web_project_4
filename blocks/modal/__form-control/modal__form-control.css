@@ -1,0 +1,21 @@
+.modal__form-control{
+    margin: 0 36px 0;
+    outline: 0;
+    border-bottom: 1px solid black;
+    width: calc(100% - 72px)
+}
+
+.modal__form-control + .modal__form-control{
+    margin: 30px 36px 0;
+}
+
+@media screen and (max-width: 550px){
+    .modal__form-control{
+        width: calc(100% - 44px);
+        margin: 0 22px 0;
+    }
+
+    .modal__form-control + .modal__form-control{
+        margin: 30px 22px 0;
+    }
+}

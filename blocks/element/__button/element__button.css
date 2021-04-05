@@ -1,8 +1,9 @@
 .element__button{
+    background-image: url(../../../images/ElementButton.svg);
     background-position: center;
     background-color: white;
     background-repeat: no-repeat;
-    width: 21px;
+    width: 24px;
     height: 19px;
     outline: none;
     border: none;
@@ -11,7 +12,7 @@
 }
 
 .element__button_active{
-    fill: none;
+    background-image: url(../../../images/ElementButonFilled.svg);
 }
 
 .element__button:hover{

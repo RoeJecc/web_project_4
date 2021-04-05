@@ -44,16 +44,8 @@ profileForm.addEventListener('submit', function (event) {
 
 
 
-
-
-
 // Hearts
-var activeLike = document.querySelector('.element__button_active');
-
-activeLike.addEventListener('click', function (event) {
-    if (activeLike.style.fill === 'none') {
-        activeLike.style.fill = 'black';
-    } else if (activeLike.style.fill ='black') {
-        activeLike.style.fill = 'none';
-    } return;
-});
+function myFunction() {
+    var element = document.getElementById("likeButton");
+    element.classList.toggle("element__button_active");
+  }

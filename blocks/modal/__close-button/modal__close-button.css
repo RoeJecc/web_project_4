@@ -1,0 +1,25 @@
+.modal__close-button{
+    background-image: url(../../../images/CloseIcon.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: black;
+    border: none;
+    height: 48px;
+    width: 48px;
+    align-self: flex-end;
+    justify-self: flex-end;
+    position: absolute;
+    right: -50px;
+    top: -50px;
+}
+
+.modal__close-button:hover{
+    opacity: .6;
+}
+
+@media screen and (max-width: 550px){
+    .modal__close-button{
+        right: 0;
+        top: -63px;
+    }
+}
