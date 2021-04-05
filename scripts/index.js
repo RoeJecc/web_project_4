@@ -24,9 +24,6 @@ closeModal.addEventListener('click', function (event){
     overlay.style.display = 'none';
 });
 
-
-
-
 profileForm.addEventListener('submit', function (event) {
     profileName.textContent = profileFormNameInput.value;
     profileOccupation.textContent = profileFormOccupationInput.value;
@@ -34,9 +31,6 @@ profileForm.addEventListener('submit', function (event) {
     overlay.style.display = 'none';
     event.preventDefault();
 });
-
-
-
 
 // Hearts
   function toggleClass( element ) {
