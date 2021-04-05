@@ -1,16 +1,13 @@
 # Project 4: Around The U.S.
 
-### Overview
+**Description**
 
-* Figma
-* Images
+This web page is an exercise in HTML, CSS, and Javascript. This site is responsive with specific dimensions set for screen sizes of 1280px and 320px and includes a "Profile" section that can be edited through a modal. As well as a grid with photos and a toggleable "Like" button.
 
-**Figma**
+**Technologies**
 
-* [Link to the project in Figma](https://www.figma.com/file/SurN1jaeEQIhuZEDMhmWWf/Sprint-4-Around-The-U.S.-desktop-mobile?node-id=0%3A1)
+The technologies used include (but is not limited to): HTML, CSS, grid, flexbox, and Javascript.
 
-**Images**
+**Link**
 
-The way you'll do this at work is by exporting images directly from Figma — we recommend doing that to practice more. Don't forget to optimize them [here](https://tinypng.com/), so your project loads faster. 
 
-Have fun with JavaScript!

@@ -20,6 +20,8 @@
 @media screen and (max-width: 550px){
     .modal__close-button{
         right: 0;
-        top: -63px;
+        top: -41px;
+        height: 26px;
+        width: 26px;
     }
 }
