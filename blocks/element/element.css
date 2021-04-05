@@ -2,6 +2,7 @@
 @import url(./__info/element__info.css);
 @import url(./__text/element__text.css);
 @import url(./__button/element__button.css);
+@import url(./__button/_active/element__button_active.css);
 
 .element{
     display: flex;

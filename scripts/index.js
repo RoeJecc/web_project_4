@@ -38,14 +38,13 @@ profileForm.addEventListener('submit', function (event) {
 
 
 
-
-
-
-
-
-
 // Hearts
-function myFunction() {
-    var element = document.getElementById("likeButton");
-    element.classList.toggle("element__button_active");
-  }
+  function toggleClass( element ) {
+    var classe = 'element__button element__button_inactive';
+
+    if ( element.className == classe ){
+        element.className = classe.replace('element__button_inactive', 'element__button_active');
+    } else {
+        element.className = classe;
+    }
+}
