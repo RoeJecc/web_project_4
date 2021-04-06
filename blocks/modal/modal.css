@@ -1,28 +1,28 @@
-@import url(./__form-control/modal__form-control.css);
 @import url(./__form-submit/modal__form-submit.css);
-@import url(./__name/modal__name.css);
-@import url(./__occupation/modal__occupation.css);
+@import url(./__text-input/_type/modal__text-input_type_name.css);
+@import url(./__text-input/_type/modal__text-input_type_occupation.css);
 @import url(./__profile/modal__profile.css);
 @import url(./__title/modal__title.css);
 @import url(./__close-button/modal__close-button.css);
+@import url(./__container/modal__container.css);
+@import url(./__text-input/modal__text-input.css);
 
 .modal{
     background-color: white;
     display: none;
-    height: 330px;
-    position: absolute;
+    position: fixed;
     left: calc(50% - 215px);
     width: 430px;
     top: calc(50% - 165px);
     color: black;
     border-radius: 10px;
+    z-index: 1;
 }
 
 @media screen and (max-width: 550px){
     .modal{
         width: 282px;
         left: calc(50% - 141px);
-        height: 322px;
         top: calc(50% - 161px);
     }
 }

@@ -1,6 +1,6 @@
-.modal__occupation{
+.modal__text-input_type_name{
     border: 0;
-    width: 100%;
     font-size: 14px;
     line-height: 17px;
+    color: black;
 }

@@ -9,7 +9,6 @@
 .profile{
     margin: 0 200px 46px;
     padding: 0;
-    max-height: 120px;
     display: flex;
     align-items: center;
 }
@@ -18,7 +17,6 @@
     .profile{
         flex-direction: column;
         align-self: center;
-        max-height: 286px;
     }
 }
 
