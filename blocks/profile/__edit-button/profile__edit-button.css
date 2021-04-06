@@ -9,10 +9,12 @@
     margin-top: 15px;
     box-sizing: border-box;
     cursor: pointer;
+    transition: opacity .4s linear;
 }
 
 .profile__edit-button:hover{
     opacity: .6;
+    transition: opacity .4s linear;
 }
 
 @media screen and (max-width: 826px){
