@@ -17,52 +17,52 @@
             <img class="profile__avatar" alt="Cousteau Image" src="./images/cousteau.jpg">
             <div class="profile__info">
                 <h1 class="profile__name">Jacques Cousteau</h1>
-                <button class="profile__edit-button"></button>
+                <button class="profile__edit-button" type="button"></button>
                 <p class="profile__occupation">Explorer</p>
             </div>
-            <button class="profile__add-button"></button>
+            <button class="profile__add-button" type="button"></button>
         </section>
         <section class="elements">
             <div class="element">
                 <img class="element__image" alt="Yosemite" src="images/Yosemite.png">
                 <div class="element__info">
                     <h2 class="element__text">Yosemite Valley</h2>
-                    <button class="element__button element__button_inactive" onclick="toggleClass( this )"></button>
+                    <button class="element__button" type="button"></button>
                 </div>
             </div>
             <div class="element">
                 <img class="element__image" alt="Lake Louise" src="images/LakeLouise.png">
                 <div class="element__info">
                     <h2 class="element__text">Lake Louise</h2>
-                    <button class="element__button element__button_inactive" onclick="toggleClass( this )"></button>
+                    <button class="element__button" type="button"></button>
                 </div>
             </div>
             <div class="element">
                 <img class="element__image" alt="Bald Mountains" src="images/BaldMountains.png">
                 <div class="element__info">
                     <h2 class="element__text">Bald Mountains</h2>
-                    <button class="element__button element__button_inactive" onclick="toggleClass( this )"></button>
+                    <button class="element__button" type="button"></button>
                 </div>
             </div>
             <div class="element">
                 <img class="element__image" alt="Latemar" src="images/Latemar.png">
                 <div class="element__info">
                     <h2 class="element__text">Latemar</h2>
-                    <button class="element__button element__button_inactive" onclick="toggleClass( this )"></button>
+                    <button class="element__button" type="button"></button>
                 </div>
             </div>
             <div class="element">
                 <img class="element__image" alt="Vanoise" src="images/Vanoise.png">
                 <div class="element__info">
                     <h2 class="element__text">Vanoise National Park</h2>
-                    <button class="element__button element__button_inactive" onclick="toggleClass( this )"></button>
+                    <button class="element__button" type="button"></button>
                 </div>
             </div>
             <div class="element">
                 <img class="element__image" alt="Lago" src="images/Lago.png">
                 <div class="element__info">
                     <h2 class="element__text">Lago di Braies</h2>
-                    <button class="element__button element__button_inactive" onclick="toggleClass( this )"></button>
+                    <button class="element__button" type="button"></button>
                 </div>
             </div>
         </section>
@@ -73,12 +73,13 @@
     <div class="popup"></div>
     <div class="modal">
         <div class="modal__container">
-            <button class="modal__close-button"></button>
+            <button class="modal__close-button" type="button"></button>
             <form name="profile" class="modal__profile">
                 <h3 class="modal__title">Edit Profile</h3>
                 <input id="name" name="name" type="text" class="modal__text-input modal__text-input_type_name">
-                <input id="occupation" name="occupation" type="text" class="modal__text-input modal__text-input_type_occupation">
-                <button class="modal__form-submit">Save</button>
+                <input id="occupation" name="occupation" type="text"
+                    class="modal__text-input modal__text-input_type_occupation">
+                <button class="modal__form-submit" type="submit">Save</button>
             </form>
         </div>
     </div>

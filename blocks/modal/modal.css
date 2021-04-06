@@ -6,6 +6,7 @@
 @import url(./__close-button/modal__close-button.css);
 @import url(./__container/modal__container.css);
 @import url(./__text-input/modal__text-input.css);
+@import url(./__open/modal__open.css);
 
 .modal{
     background-color: white;

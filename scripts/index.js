@@ -4,6 +4,7 @@ const popup = document.querySelector('.popup');
 const modal = document.querySelector('.modal');
 const closeModal = document.querySelector('.modal__close-button');
 
+
 // Modal Inputs
 const profileName = document.querySelector('.profile__name');
 const profileOccupation = document.querySelector('.profile__occupation');
@@ -12,33 +13,32 @@ const profileForm = document.forms.profile;
 const profileFormNameInput = profileForm.elements.name;
 const profileFormOccupationInput = profileForm.elements.occupation;
 
-openModal.addEventListener('click', function (event) {
-    modal.style.display = 'flex';
-    popup.style.display = 'block';
+function openPopup(event) {
+    console.log(modal);
+    modal.className = 'modal__open';
+    popup.className = 'popup__open';
     profileFormNameInput.value = profileName.textContent;
     profileFormOccupationInput.value = profileOccupation.textContent;
-});
+    return;
+}
 
-closeModal.addEventListener('click', function (event){
-    modal.style.display = 'none';
-    popup.style.display = 'none';
-});
+openModal.addEventListener('click',openPopup);
 
-profileForm.addEventListener('submit', function (event) {
+function closePopup(event) {
+    modal.className = 'modal';
+    popup.className = 'popup';
+    return;
+}
+
+closeModal.addEventListener('click',closePopup);
+
+function submitInfo(event) {
     profileName.textContent = profileFormNameInput.value;
     profileOccupation.textContent = profileFormOccupationInput.value;
-    modal.style.display = 'none';
-    popup.style.display = 'none';
+    modal.className = 'modal';
+    popup.className = 'popup';
     event.preventDefault();
-});
+    return;
+}
 
-// Hearts
-  function toggleClass( element ) {
-    var classe = 'element__button element__button_inactive';
-
-    if ( element.className == classe ){
-        element.className = classe.replace('element__button_inactive', 'element__button_active');
-    } else {
-        element.className = classe;
-    }
-};
+profileForm.addEventListener('submit',submitInfo);
