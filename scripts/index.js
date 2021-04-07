@@ -1,6 +1,5 @@
 // Modal 
 const openModal = document.querySelector('.profile__edit-button');
-const popup = document.querySelector('.popup');
 const modal = document.querySelector('.modal');
 const closeModal = document.querySelector('.modal__close-button');
 
@@ -13,10 +12,9 @@ const profileForm = document.forms.profile;
 const profileFormNameInput = profileForm.elements.name;
 const profileFormOccupationInput = profileForm.elements.occupation;
 
-function openPopup(event) {
+function openPopup() {
     console.log(modal);
-    modal.className = 'modal__open';
-    popup.className = 'popup__open';
+    modal.classList.add('modal_display_open');
     profileFormNameInput.value = profileName.textContent;
     profileFormOccupationInput.value = profileOccupation.textContent;
     return;
@@ -24,9 +22,8 @@ function openPopup(event) {
 
 openModal.addEventListener('click',openPopup);
 
-function closePopup(event) {
-    modal.className = 'modal';
-    popup.className = 'popup';
+function closePopup() {
+    modal.classList.remove('modal_display_open');
     return;
 }
 
@@ -35,8 +32,7 @@ closeModal.addEventListener('click',closePopup);
 function submitInfo(event) {
     profileName.textContent = profileFormNameInput.value;
     profileOccupation.textContent = profileFormOccupationInput.value;
-    modal.className = 'modal';
-    popup.className = 'popup';
+    closePopup();
     event.preventDefault();
     return;
 }
