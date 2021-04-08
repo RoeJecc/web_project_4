@@ -13,8 +13,7 @@ const profileFormNameInput = profileForm.elements.name;
 const profileFormOccupationInput = profileForm.elements.occupation;
 
 function openPopup() {
-    console.log(modal);
-    modal.classList.add('modal_display_open');
+    modal.classList.add('modal_open');
     profileFormNameInput.value = profileName.textContent;
     profileFormOccupationInput.value = profileOccupation.textContent;
     return;
@@ -23,7 +22,7 @@ function openPopup() {
 openModal.addEventListener('click',openPopup);
 
 function closePopup() {
-    modal.classList.remove('modal_display_open');
+    modal.classList.remove('modal_open');
     return;
 }
 
