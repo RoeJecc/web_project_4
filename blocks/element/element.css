@@ -3,6 +3,7 @@
 @import url(./__text/element__text.css);
 @import url(./__button/element__button.css);
 @import url(./__button/_active/element__button_active.css);
+@import url(./__delete-button/element__delete-button.css);
 
 .element{
     display: flex;
@@ -11,4 +12,5 @@
     align-items: center;
     background-color: white;
     border-radius: 10px;
+    position: relative;
 }

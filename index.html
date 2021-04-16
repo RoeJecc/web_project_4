@@ -22,57 +22,14 @@
             </div>
             <button class="profile__add-button" type="button" name="add"></button>
         </section>
-        <section class="elements">
-            <div class="element">
-                <img class="element__image" alt="Yosemite" src="images/Yosemite.png">
-                <div class="element__info">
-                    <h2 class="element__text">Yosemite Valley</h2>
-                    <button class="element__button" type="button"></button>
-                </div>
-            </div>
-            <div class="element">
-                <img class="element__image" alt="Lake Louise" src="images/LakeLouise.png">
-                <div class="element__info">
-                    <h2 class="element__text">Lake Louise</h2>
-                    <button class="element__button" type="button"></button>
-                </div>
-            </div>
-            <div class="element">
-                <img class="element__image" alt="Bald Mountains" src="images/BaldMountains.png">
-                <div class="element__info">
-                    <h2 class="element__text">Bald Mountains</h2>
-                    <button class="element__button" type="button"></button>
-                </div>
-            </div>
-            <div class="element">
-                <img class="element__image" alt="Latemar" src="images/Latemar.png">
-                <div class="element__info">
-                    <h2 class="element__text">Latemar</h2>
-                    <button class="element__button" type="button"></button>
-                </div>
-            </div>
-            <div class="element">
-                <img class="element__image" alt="Vanoise" src="images/Vanoise.png">
-                <div class="element__info">
-                    <h2 class="element__text">Vanoise National Park</h2>
-                    <button class="element__button" type="button"></button>
-                </div>
-            </div>
-            <div class="element">
-                <img class="element__image" alt="Lago" src="images/Lago.png">
-                <div class="element__info">
-                    <h2 class="element__text">Lago di Braies</h2>
-                    <button class="element__button" type="button"></button>
-                </div>
-            </div>
-        </section>
+        <section class="elements"></section>
     </main>
     <footer class="footer">
         <p class="footer__text">&copy; 2020 Around The U.S.</p>
     </footer>
-    <div class="modal">
+    <div class="modal modal_type_profile">
         <div class="modal__container">
-            <button class="modal__close-button" type="button" name="close"></button>
+            <button class="modal__close-button modal__close-button_profile" type="button" name="close"></button>
             <form name="profile" class="modal__profile">
                 <h3 class="modal__title">Edit Profile</h3>
                 <input id="name" name="name" type="text" class="modal__text-input modal__text-input_type_name" required
@@ -83,6 +40,38 @@
             </form>
         </div>
     </div>
+    <div class="modal modal_type_add-card">
+        <div class="modal__container">
+            <button class="modal__close-button modal__close-button_add-card" type="button" name="close"></button>
+            <form name="profile" class="modal__profile">
+                <h3 class="modal__title">New place</h3>
+                <input id="title" name="title" type="text" class="modal__text-input modal__text-input_type_name"
+                    required placeholder="Title">
+                <input id="image" name="image" type="url" placeholder="Image link" required
+                    class="modal__text-input modal__text-input_type_link">
+                <button class="modal__form-submit" type="submit">Create</button>
+            </form>
+        </div>
+    </div>
+    <div class="modal modal_type_preview">
+        <div class="modal__container modal__container_preview">
+            <button class="modal__close-button modal__close-button_preview" type="button" name="close"></button>
+            <figure class="modal__image-container">
+                <img class="modal__image" src="">
+                <figcaption class="modal__image-caption"></figcaption>
+            </figure>
+        </div>
+    </div>
+    <template id="card-template">
+        <div class="element">
+            <button class="element__delete-button" type="button"></button>
+            <img class="element__image">
+            <div class="element__info">
+                <h2 class="element__text"></h2>
+                <button class="element__button" type="button"></button>
+            </div>
+        </div>
+    </template>
     <script src="./scripts/index.js"></script>
 </body>
 

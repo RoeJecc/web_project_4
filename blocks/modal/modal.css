@@ -5,7 +5,11 @@
 @import url(./__title/modal__title.css);
 @import url(./__close-button/modal__close-button.css);
 @import url(./__container/modal__container.css);
+@import url(./__container/_preview/modal__container_preview.css);
 @import url(./__text-input/modal__text-input.css);
+@import url(./__image/modal__image.css);
+@import url(./__image-container/modal__image-container.css);
+@import url(./__image-caption/modal__image-caption.css);
 
 
 .modal{
