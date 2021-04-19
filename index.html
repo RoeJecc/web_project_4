@@ -40,19 +40,21 @@
             </form>
         </div>
     </div>
+
     <div class="modal modal_type_add-card">
         <div class="modal__container">
             <button class="modal__close-button modal__close-button_add-card" type="button" name="close"></button>
-            <form name="profile" class="modal__profile">
+            <form name="card" class="modal__profile modal__profile_add">
                 <h3 class="modal__title">New place</h3>
-                <input id="title" name="title" type="text" class="modal__text-input modal__text-input_type_name"
+                <input id="newCardTitle" name="newCardTitle" type="text" class="modal__text-input modal__text-input_type_title"
                     required placeholder="Title">
-                <input id="image" name="image" type="url" placeholder="Image link" required
-                    class="modal__text-input modal__text-input_type_link">
-                <button class="modal__form-submit" type="submit">Create</button>
+                <input id="newCardURL" name="newCardURL" type="url" placeholder="Image link" required
+                    class="modal__text-input modal__text-input_type_url">
+                <button class="modal__form-submit modal__form-submit_create" type="submit">Create</button>
             </form>
         </div>
     </div>
+
     <div class="modal modal_type_preview">
         <div class="modal__container modal__container_preview">
             <button class="modal__close-button modal__close-button_preview" type="button" name="close"></button>
@@ -68,7 +70,7 @@
             <img class="element__image">
             <div class="element__info">
                 <h2 class="element__text"></h2>
-                <button class="element__button" type="button"></button>
+                <button class="element__button element__button_inactive" type="button" onclick="toggleClass( this )"></button>
             </div>
         </div>
     </template>
