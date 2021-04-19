@@ -43,8 +43,9 @@ const profileOccupation = document.querySelector('.profile__occupation');
 const imageTitle = document.querySelector('.modal__image-caption');
 const elementsBlock = document.querySelector('.elements');
 const createCard = document.querySelector('.modal__form-submit_create');
-
 const addCardPopupForm = document.querySelector('.modal__profile');
+const cardTitleSubmitted = document.querySelector(".modal__text-input_type_title");
+const cardURLSubmitted = document.querySelector(".modal__text-input_type_url");
 
 const profileForm = document.forms.profile;
 const cardForm = document.forms.card;
@@ -107,7 +108,6 @@ function addCardBeginning(card, wrapper) {
   wrapper.prepend(createCardElement(card));
 }
 
-// Hearts
 function toggleClass( element ) {
   const classe = 'element__button element__button_inactive';
   if ( element.className == classe ){
@@ -116,10 +116,6 @@ function toggleClass( element ) {
       element.className = classe;
   }
 };
-
-const cardTitleSubmitted = document.querySelector(".modal__text-input_type_title");
-const cardURLSubmitted = document.querySelector(".modal__text-input_type_url");
-
 
 function handleAddCardSubmit(e) { 
   e.preventDefault();
