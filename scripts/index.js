@@ -40,6 +40,7 @@ const closeAddModal = document.querySelector('.modal__close-button_add-card');
 const closePreviewModal = document.querySelector('.modal__close-button_preview');
 const profileName = document.querySelector('.profile__name');
 const profileOccupation = document.querySelector('.profile__occupation');
+const previewImage = previewModal.querySelector('.modal__image');
 const imageTitle = document.querySelector('.modal__image-caption');
 const elementsBlock = document.querySelector('.elements');
 const createCard = document.querySelector('.modal__form-submit_create');
@@ -54,14 +55,19 @@ const profileFormOccupationInput = profileForm.elements.occupation;
 
 // Functions
 
-function togglePopup(Popup) {
-  if (!Popup.classList.contains('modal_open')){
-    profileFormNameInput.value = profileName.textContent;
-    profileFormOccupationInput.value = profileOccupation.textContent;
+function togglePopup(popup) {
+  if (!popup.classList.contains('modal_open')){
 }
-    Popup.classList.toggle('modal_open');
+    popup.classList.toggle('modal_open');
     return;
 }
+
+function profileValues(){
+  profileFormNameInput.value = profileName.textContent;
+  profileFormOccupationInput.value = profileOccupation.textContent;
+  return;
+}
+
 
 function submitInfo(event) {
     event.preventDefault(modal);
@@ -94,7 +100,6 @@ function renderCard(card, wrapper) {
 }
 
 const onImagePreview = card => {
-    const previewImage = previewModal.querySelector('.modal__image');
     previewImage.src = card.link;
     imageTitle.textContent = card.name;
     togglePopup(previewModal);
@@ -132,7 +137,7 @@ function handleAddCardSubmit(e) {
 
 // Event Handlers
 
-openModal.addEventListener('click', () => togglePopup(modal));
+openModal.addEventListener('click', () => togglePopup(modal), profileValues());
 
 openAddModal.addEventListener('click', () => togglePopup(addModal));
 
