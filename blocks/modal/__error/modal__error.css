@@ -1,0 +1,9 @@
+.modal__error{
+    margin: 0 36px 0;
+}
+
+@media screen and (max-width: 550px){
+    .modal__error{
+        margin: 0 22px 0;
+    }
+}

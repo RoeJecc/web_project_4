@@ -1,3 +1,5 @@
+const ESC_KEYCODE = 27;
+
 // Cards
 
 const initialCards = [
@@ -54,12 +56,36 @@ const profileFormOccupationInput = profileForm.elements.occupation;
 
 // Functions
 
-function togglePopup(popup) {
-  if (!popup.classList.contains('modal_open')){
-}
-    popup.classList.toggle('modal_open');
-    return;
-}
+ const isEscEvent = (evt, action) => {
+   const activePopup = document.querySelector('.modal_open');
+
+   if (evt.which === ESC_KEYCODE) {
+     action(activePopup);
+   }
+ };
+
+ const handleEscUp = evt => {
+   evt.preventDefault();
+   isEscEvent(evt, closeModalWindow);
+ };
+
+ const openModalWindow = popup => {
+   popup.classList.add('modal_open');
+   document.addEventListener('keyup', handleEscUp);
+ };
+
+ const closeModalWindow = popup => {
+   popup.classList.remove('modal_open');
+   document.removeEventListener('keyup', handleEscUp);
+ };
+
+
+// function togglePopup(popup) {
+//   if (!popup.classList.contains('modal_open')){
+// }
+//     popup.classList.toggle('modal_open');
+//     return;
+// }
 
 function profileValues(){
   profileFormNameInput.value = profileName.textContent;
@@ -72,7 +98,7 @@ function submitInfo(event) {
     event.preventDefault(modal);
     profileName.textContent = profileFormNameInput.value;
     profileOccupation.textContent = profileFormOccupationInput.value;
-    togglePopup(modal);
+    closeModalWindow(modal);
 }
 
 function createCardElement(card) {
@@ -101,7 +127,7 @@ function renderCard(card, wrapper) {
 const onImagePreview = card => {
     previewImage.src = card.link;
     imageTitle.textContent = card.name;
-    togglePopup(previewModal);
+    openModalWindow(previewModal);
 }
 
 const onDeleteButtonClick = cardElement => {
@@ -131,20 +157,20 @@ function handleAddCardSubmit(e) {
     link: newCardURL
   };
   addCardBeginning(newCardObject, elementsBlock);
-  togglePopup(addModal);
+  closeModalWindow(addModal);
 }
 
 // Event Handlers
 
-openModal.addEventListener('click', () => togglePopup(modal), profileValues());
+openModal.addEventListener('click', () => openModalWindow(modal), profileValues());
 
-openAddModal.addEventListener('click', () => togglePopup(addModal));
+openAddModal.addEventListener('click', () => openModalWindow(addModal));
 
-closeModal.addEventListener('click', () => togglePopup(modal));
+closeModal.addEventListener('click', () => closeModalWindow(modal));
 
-closeAddModal.addEventListener('click', () => togglePopup(addModal));
+closeAddModal.addEventListener('click', () => closeModalWindow(addModal));
 
-closePreviewModal.addEventListener('click', () => togglePopup(previewModal));
+closePreviewModal.addEventListener('click', () => closeModalWindow(previewModal));
 
 profileForm.addEventListener('submit',submitInfo);
 
