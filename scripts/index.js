@@ -80,12 +80,6 @@ const profileFormOccupationInput = profileForm.elements.occupation;
  };
 
 
-// function togglePopup(popup) {
-//   if (!popup.classList.contains('modal_open')){
-// }
-//     popup.classList.toggle('modal_open');
-//     return;
-// }
 
 function profileValues(){
   profileFormNameInput.value = profileName.textContent;

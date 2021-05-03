@@ -12,6 +12,7 @@
 @import url(./__image-caption/modal__image-caption.css);
 @import url(./__text-input/_type/modal__text-input_type_error.css);
 @import url(./__error/modal__error.css);
+@import url(./__form-submit/_disabled/modal__form-submit_disabled.css);
 
 
 .modal{
