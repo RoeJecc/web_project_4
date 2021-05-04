@@ -60,8 +60,6 @@ function enableValidation( {formSelector, inputSelector, submitButtonSelector, .
     })
 }
 
-
-
 // enabling validation by calling enableValidation()
 // pass all the settings on call
 

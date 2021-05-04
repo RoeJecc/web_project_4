@@ -156,6 +156,14 @@ function handleAddCardSubmit(e) {
   closeModalWindow(addModal);
 }
 
+function clickOut(e) {
+  if (e.target.classList.contains("modal_open")) {
+    closeModalWindow(modal);
+    closeModalWindow(addModal);
+    closeModalWindow(previewModal);
+  }
+}
+
 // Event Handlers
 
 openModal.addEventListener('click', () => openModalWindow(modal), profileValues());
@@ -173,14 +181,3 @@ profileForm.addEventListener('submit', submitInfo);
 cardForm.addEventListener('submit', handleAddCardSubmit);
 
 initialCards.forEach(card => renderCard(card, elementsBlock));
-
-
-
-
-
-
-function clickOut(e) {
-  if (e.target.classList.contains("modal_open")) {
-    closeModalWindow(modal);
-  }
-}
