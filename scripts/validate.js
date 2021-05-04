@@ -1,73 +1,95 @@
-function showErrorMessage(input, form, {errorClass, inputErrorClass, ...rest}) {
-    const error = document.querySelector('#' + input.id + '-error');
+const setEventListeners = (form) => {
+    const inputs = createInputs(form, validationForm)
+    const button = form.querySelector(validationForm.submitButtonSelector);
+    
+    toggleButtonState(inputs, button);
+  
+    inputs.forEach((input) => {
+      input.addEventListener("input", function () {
+        checkInputValidity(form, input);
+        toggleButtonState(inputs, button);
+      });
+    });
+  };
+
+
+function showErrorMessage(form, input) {
+    const error = form.querySelector('#' + input.id + '-error');
+
     error.textContent = input.validationMessage;
-
-    error.classList.add(errorClass);
-    input.classList.add(inputErrorClass);
+    error.classList.add(validationForm.errorClass);
+    input.classList.add(validationForm.inputErrorClass);
 
 }
 
-function hideErrorMessage(input, form, {errorClass, inputErrorClass, ...rest}) {
-    const error = document.querySelector('#' + input.id + '-error');
+
+function hideErrorMessage(input, form) {
+    const error = form.querySelector('#' + input.id + '-error');
+    
     error.textContent = "";
-
-    error.classList.remove(errorClass);
-    input.classList.remove(inputErrorClass);
-
+    error.classList.remove(validationForm.errorClass);
+    input.classList.remove(validationForm.inputErrorClass);
 }
 
-function checkInputValidity(input, form, rest) {
+
+function checkInputValidity(form, input) {
     if (!input.validity.valid) {
-        showErrorMessage(input, form, rest);
+        showErrorMessage(form, input, input.validationMessage);
     } else {
-        hideErrorMessage(input, form, rest);
+        hideErrorMessage(input, form);
     }
 }
 
 
-function toggleButtonState(inputs, button, {inactiveButtonClass, ...rest}) {
-    var isValid = inputs.every(function (input) {
-        return input.validity.valid;
-    })
+const hasInvalidInput = (inputs) => {
+    return inputs.some((input) => {
+      return !input.validity.valid;
+    });
+  };
 
-    if (isValid) {
-        button.classList.remove(inactiveButtonClass);
-        button.disabled = false;
-    } else {
-        button.classList.add(inactiveButtonClass);
+
+function toggleButtonState(inputs, button) {
+    if (hasInvalidInput(inputs)) {
+        button.classList.add(validationForm.inactiveButtonClass);
         button.disabled = true;
+    } else {
+        button.classList.remove(validationForm.inactiveButtonClass);
+        button.disabled = false;
     }
 }
 
 
-function enableValidation( {formSelector, inputSelector, submitButtonSelector, ...rest}) {
-    const forms = Array.from(document.querySelectorAll(formSelector));
-
+function enableValidation(settingsObject) {
+    const forms = Array.from(document.querySelectorAll(settingsObject.formSelector));
     forms.forEach((form) => {
-        form.addEventListener('submit', ((e) => {
-            e.preventDefault()
-        }))
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+      });
+      setEventListeners(form);
+    });
+  }
 
-        const inputs = Array.from(document.querySelectorAll(inputSelector));
-        const button = form.querySelector(submitButtonSelector);
 
-        inputs.forEach((input) => {
-            input.addEventListener('input', () => {
-                checkInputValidity(input, form, rest);
-                toggleButtonState(inputs, button, rest);
-            })
-        })
-    })
+function createInputs(form, settings) {
+    return Array.from(form.querySelectorAll(settings.inputSelector));
 }
 
+
+function resetForm(form) {
+    form.reset();
+  }
+
+  
 // enabling validation by calling enableValidation()
 // pass all the settings on call
 
-enableValidation({
+const validationForm = {
     formSelector: ".modal__profile",
     inputSelector: ".modal__text-input",
     submitButtonSelector: ".modal__form-submit",
     inactiveButtonClass: "modal__form-submit_disabled",
-    inputErrorClass: "modal__text-input_type_error",
-    errorClass: "modal__error_visible"
-  });
+    inputErrorClass: ".modal__text-input_type_error",
+    errorClass: "modal__input-error_active"
+};
+
+enableValidation(validationForm);

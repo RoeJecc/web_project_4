@@ -34,12 +34,12 @@
                 <h3 class="modal__title">Edit Profile</h3>
                 <input id="name" name="name" type="text" class="modal__text-input modal__text-input_type_name" required
                     placeholder="Name" minlength="2" maxlength="40">
-                    <span id="name-error" class="modal__error"></span>
+                <span id="name-error" class="modal__error"></span>
 
 
                 <input id="occupation" name="occupation" type="text" placeholder="About Me" required
                     class="modal__text-input modal__text-input_type_occupation" minlength="2" maxlength="200">
-                    <span id="occupation-error" class="modal__error"></span>
+                <span id="occupation-error" class="modal__error"></span>
 
 
 
@@ -54,11 +54,12 @@
             <form name="card" class="modal__profile modal__profile_add">
                 <h3 class="modal__title">New place</h3>
                 <input id="newCardTitle" name="newCardTitle" type="text"
-                    class="modal__text-input modal__text-input_type_title" required placeholder="Title" minlength="1" maxlength="30">
-                    <span id="newCardTitle-error" class="modal__error"></span>
+                    class="modal__text-input modal__text-input_type_title" required placeholder="Title" minlength="1"
+                    maxlength="30">
+                <span id="newCardTitle-error" class="modal__error"></span>
                 <input id="newCardURL" name="newCardURL" type="url" placeholder="Image link" required
                     class="modal__text-input modal__text-input_type_url">
-                    <span id="newCardURL-error" class="modal__error"></span>
+                <span id="newCardURL-error" class="modal__error"></span>
                 <button class="modal__form-submit modal__form-submit_create" type="submit">Create</button>
             </form>
         </div>
@@ -79,14 +80,14 @@
             <img class="element__image">
             <div class="element__info">
                 <h2 class="element__text"></h2>
-                <button class="element__button element__button_inactive" type="button"
-                    onclick="toggleClass( this )"></button>
+                <button class="element__button element__button_inactive" type="button"></button>
             </div>
         </div>
     </template>
+    <script src="./scripts/arrays.js"></script>
     <script src="./scripts/index.js"></script>
     <script src="./scripts/validate.js"></script>
-    
+
 </body>
 
 </html>

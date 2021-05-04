@@ -1,31 +1,4 @@
-// Cards
 
-const initialCards = [
-  {
-    name: "Yosemite Valley",
-    link: "https://code.s3.yandex.net/web-code/yosemite.jpg"
-  },
-  {
-    name: "Lake Louise",
-    link: "https://code.s3.yandex.net/web-code/lake-louise.jpg"
-  },
-  {
-    name: "Bald Mountains",
-    link: "https://code.s3.yandex.net/web-code/bald-mountains.jpg"
-  },
-  {
-    name: "Latemar",
-    link: "https://code.s3.yandex.net/web-code/latemar.jpg"
-  },
-  {
-    name: "Vanoise National Park",
-    link: "https://code.s3.yandex.net/web-code/vanoise.jpg"
-  },
-  {
-    name: "Lago di Braies",
-    link: "https://code.s3.yandex.net/web-code/lago.jpg"
-  }
-];
 
 
 // Declarations
@@ -86,12 +59,11 @@ const closeModalWindow = popup => {
 function profileValues() {
   profileFormNameInput.value = profileName.textContent;
   profileFormOccupationInput.value = profileOccupation.textContent;
-  return;
 }
 
 
 function submitInfo(event) {
-  event.preventDefault(modal);
+  event.preventDefault();
   profileName.textContent = profileFormNameInput.value;
   profileOccupation.textContent = profileFormOccupationInput.value;
   closeModalWindow(modal);
@@ -105,6 +77,8 @@ function createCardElement(card) {
   const cardTitle = cardElement.querySelector('.element__text');
   const deleteButton = cardElement.querySelector('.element__delete-button');
   const likeButton = cardElement.querySelector('.element__button');
+  
+  
 
   cardImage.style.backgroundImage = `url(${card.link})`;
   cardTitle.textContent = card.name;
@@ -112,6 +86,8 @@ function createCardElement(card) {
   cardImage.addEventListener('click', () => onImagePreview(card));
 
   deleteButton.addEventListener('click', () => onDeleteButtonClick(cardElement));
+
+  likeButton.addEventListener('click', () => toggleClass(likeButton));
 
   return cardElement;
 }
@@ -158,9 +134,7 @@ function handleAddCardSubmit(e) {
 
 function clickOut(e) {
   if (e.target.classList.contains("modal_open")) {
-    closeModalWindow(modal);
-    closeModalWindow(addModal);
-    closeModalWindow(previewModal);
+    closeModalWindow(e.target);
   }
 }
 
