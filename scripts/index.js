@@ -72,11 +72,13 @@ const handleEscUp = evt => {
 const openModalWindow = popup => {
   popup.classList.add('modal_open');
   document.addEventListener('keyup', handleEscUp);
+  document.addEventListener('click', clickOut);
 };
 
 const closeModalWindow = popup => {
   popup.classList.remove('modal_open');
   document.removeEventListener('keyup', handleEscUp);
+  document.removeEventListener('click', clickOut);
 };
 
 
@@ -176,10 +178,9 @@ initialCards.forEach(card => renderCard(card, elementsBlock));
 
 
 
-  document.addEventListener('click', (e) => {
-    e.preventDefault();
-    if(e.target.classList.contains('modal__close-button') || e.target.classList.contains('modal')) {
-      closeModalWindow(modal);
-    }
-  })
 
+function clickOut(e) {
+  if (e.target.classList.contains("modal_open")) {
+    closeModalWindow(modal);
+  }
+}
