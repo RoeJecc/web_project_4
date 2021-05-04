@@ -73,17 +73,3 @@ enableValidation({
     inputErrorClass: "modal__text-input_type_error",
     errorClass: "modal__error_visible"
   });
-
-
-
-// const setEventListeners = form => {
-//   const inputs = Array.from(formElement.querySelectorAll(inputSelector));
-//   const button = form.querySelector(submitButtonSelector);
-//   toggleButtonState(inputs, button);
-//   inputs.forEach(input => {
-//     input.addEventListener('input', function () {
-//       checkInputValidity(form, input);
-//       toggleButtonState(inputs, button);
-//     });
-//   });
-// };

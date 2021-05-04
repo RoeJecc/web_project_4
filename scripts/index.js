@@ -171,3 +171,15 @@ profileForm.addEventListener('submit', submitInfo);
 cardForm.addEventListener('submit', handleAddCardSubmit);
 
 initialCards.forEach(card => renderCard(card, elementsBlock));
+
+
+
+
+
+  document.addEventListener('click', (e) => {
+    e.preventDefault();
+    if(e.target.classList.contains('modal__close-button') || e.target.classList.contains('modal')) {
+      closeModalWindow(modal);
+    }
+  })
+
