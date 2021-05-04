@@ -26,15 +26,3 @@ const initialCards = [
       link: "https://code.s3.yandex.net/web-code/lago.jpg"
     }
   ];
-
-// // enabling validation by calling enableValidation()
-// // pass all the settings on call
-
-// enableValidation({
-//     formSelector: ".modal__profile",
-//     inputSelector: ".modal__text-input",
-//     submitButtonSelector: ".modal__form-submit",
-//     inactiveButtonClass: "modal__form-submit_disabled",
-//     inputErrorClass: "modal__text-input_type_error",
-//     errorClass: "modal__error_visible"
-//   });
