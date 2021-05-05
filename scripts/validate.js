@@ -79,9 +79,6 @@ function resetForm(form) {
     form.reset();
   }
 
-  
-// enabling validation by calling enableValidation()
-// pass all the settings on call
 
 const validationForm = {
     formSelector: ".modal__profile",

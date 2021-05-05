@@ -1,6 +1,3 @@
-
-
-
 // Declarations
 const ESC_KEYCODE = 27;
 const openModal = document.querySelector('.profile__edit-button');
@@ -54,13 +51,10 @@ const closeModalWindow = popup => {
   document.removeEventListener('click', clickOut);
 };
 
-
-
 function profileValues() {
   profileFormNameInput.value = profileName.textContent;
   profileFormOccupationInput.value = profileOccupation.textContent;
 }
-
 
 function submitInfo(event) {
   event.preventDefault();
@@ -77,8 +71,6 @@ function createCardElement(card) {
   const cardTitle = cardElement.querySelector('.element__text');
   const deleteButton = cardElement.querySelector('.element__delete-button');
   const likeButton = cardElement.querySelector('.element__button');
-  
-  
 
   cardImage.style.backgroundImage = `url(${card.link})`;
   cardTitle.textContent = card.name;
