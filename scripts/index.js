@@ -87,7 +87,7 @@ function createCardElement(card) {
 
   deleteButton.addEventListener('click', () => onDeleteButtonClick(cardElement));
 
-  likeButton.addEventListener('click', () => toggleClass(likeButton));
+  likeButton.addEventListener('click', () => toggleLikeButton(likeButton));
 
   return cardElement;
 }
@@ -110,13 +110,8 @@ function addCardBeginning(card, wrapper) {
   wrapper.prepend(createCardElement(card));
 }
 
-function toggleClass(element) {
-  const classe = 'element__button element__button_inactive';
-  if (element.className == classe) {
-    element.className = classe.replace('element__button_inactive', 'element__button_active');
-  } else {
-    element.className = classe;
-  }
+function toggleLikeButton(cardElement) {
+  cardElement.classList.toggle('element__button_active');
 };
 
 function handleAddCardSubmit(e) {
