@@ -1,3 +1,4 @@
+// Class
 class FormValidator {
     constructor(config, formElement) {
 
@@ -81,4 +82,5 @@ class FormValidator {
     }
 }
 
+// Exports
 export default FormValidator;

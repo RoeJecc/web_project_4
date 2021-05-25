@@ -1,10 +1,12 @@
+// Imports
 import {isEscEvent, handleEscUp, openModalWindow, closeModalWindow,} from "./index.js";
 
 const previewImage = document.querySelector('.modal__image');
 const imageTitle = document.querySelector('.modal__image-caption');
 const previewModal = document.querySelector('.modal_type_preview');
-const ESC_KEYCODE = 27;
 
+
+// Class
 class Card {
     constructor(data, template) {
         this._text = data.name;
@@ -52,4 +54,5 @@ class Card {
     }
 }
 
+// Exports
 export default Card;

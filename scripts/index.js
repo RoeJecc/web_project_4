@@ -1,3 +1,4 @@
+// Imports
 import FormValidator from "./FormValidator.js";
 import Card from "./Card.js";
 
@@ -40,15 +41,9 @@ const closeAddModal = document.querySelector('.modal__close-button_add-card');
 const closePreviewModal = document.querySelector('.modal__close-button_preview');
 const profileName = document.querySelector('.profile__name');
 const profileOccupation = document.querySelector('.profile__occupation');
-const previewImage = document.querySelector('.modal__image');
-const imageTitle = document.querySelector('.modal__image-caption');
-const previewModal = document.querySelector('.modal_type_preview');
+
 const ESC_KEYCODE = 27;
 const elementsBlock = document.querySelector('.elements');
-const createCard = document.querySelector('.modal__form-submit_create');
-const addCardPopupForm = document.querySelector('.modal__profile');
-const cardTitleSubmitted = document.querySelector('.modal__text-input_type_title');
-const cardURLSubmitted = document.querySelector('.modal__text-input_type_url');
 
 const profileForm = document.forms.profile;
 const cardForm = document.forms.card;
@@ -159,6 +154,6 @@ profileForm.addEventListener('submit', submitInfo);
 cardForm.addEventListener('submit', handleAddCardSubmit);
 
 
-
+// Exports
 
 export { isEscEvent, handleEscUp, openModalWindow, closeModalWindow, };
