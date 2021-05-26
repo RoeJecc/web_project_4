@@ -1,5 +1,5 @@
 // Imports
-import {isEscEvent, handleEscUp, openModalWindow, closeModalWindow,} from "./index.js";
+import {isEscEvent, handleEscUp, openModalWindow, closeModalWindow,} from "./utils.js";
 
 const previewImage = document.querySelector('.modal__image');
 const imageTitle = document.querySelector('.modal__image-caption');
@@ -34,6 +34,7 @@ class Card {
     _onImagePreview() {
         previewImage.src = this._link;
         imageTitle.textContent = this._text;
+        previewImage.alt = this._text;
         openModalWindow(previewModal);
     }
 
@@ -49,6 +50,7 @@ class Card {
 
         this._element.querySelector('.element__text').textContent = this._text;
         this._element.querySelector('.element__image').src = this._link;
+        this._element.querySelector('.element__image').alt = this._text;
 
         return this._element;
     }

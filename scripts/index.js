@@ -1,42 +1,17 @@
 // Imports
 import FormValidator from "./FormValidator.js";
 import Card from "./Card.js";
+import {openModalWindow, closeModalWindow, initialCards, validationForm} from "./utils.js";
 
 
 // Declarations
-const initialCards = [
-  {
-    name: "Yosemite Valley",
-    link: "https://code.s3.yandex.net/web-code/yosemite.jpg"
-  },
-  {
-    name: "Lake Louise",
-    link: "https://code.s3.yandex.net/web-code/lake-louise.jpg"
-  },
-  {
-    name: "Bald Mountains",
-    link: "https://code.s3.yandex.net/web-code/bald-mountains.jpg"
-  },
-  {
-    name: "Latemar",
-    link: "https://code.s3.yandex.net/web-code/latemar.jpg"
-  },
-  {
-    name: "Vanoise National Park",
-    link: "https://code.s3.yandex.net/web-code/vanoise.jpg"
-  },
-  {
-    name: "Lago di Braies",
-    link: "https://code.s3.yandex.net/web-code/lago.jpg"
-  }
-];
 
-const openModal = document.querySelector('.profile__edit-button');
+const openEditProfileModal = document.querySelector('.profile__edit-button');
 const openAddModal = document.querySelector('.profile__add-button');
-const modal = document.querySelector('.modal_type_profile');
+const editProfileModal = document.querySelector('.modal_type_profile');
 const addModal = document.querySelector('.modal_type_add-card');
 
-const closeModal = document.querySelector('.modal__close-button_profile');
+const closeEditProfileModal = document.querySelector('.modal__close-button_profile');
 const closeAddModal = document.querySelector('.modal__close-button_add-card');
 const closePreviewModal = document.querySelector('.modal__close-button_preview');
 const profileName = document.querySelector('.profile__name');
@@ -50,27 +25,18 @@ const cardForm = document.forms.card;
 const profileFormNameInput = profileForm.elements.name;
 const profileFormOccupationInput = profileForm.elements.occupation;
 
-const validationForm = {
-  formSelector: ".modal__profile",
-  inputSelector: ".modal__text-input",
-  submitButtonSelector: ".modal__form-submit",
-  inactiveButtonClass: "modal__form-submit_disabled",
-  inputErrorClass: ".modal__text-input_type_error",
-  errorClass: "modal__input-error_active"
-};
 
-const editFormValidator = new FormValidator(validationForm, modal);
+const editFormValidator = new FormValidator(validationForm, editProfileModal);
 const cardFormValidator = new FormValidator(validationForm, addModal);
 
 
 editFormValidator.enableValidation();
 cardFormValidator.enableValidation();
 
+
 // Functions
 
-
-
-function profileValues() {
+function fillEditProfileInputs() {
   profileFormNameInput.value = profileName.textContent;
   profileFormOccupationInput.value = profileOccupation.textContent;
 }
@@ -79,7 +45,7 @@ function submitInfo(event) {
   event.preventDefault();
   profileName.textContent = profileFormNameInput.value;
   profileOccupation.textContent = profileFormOccupationInput.value;
-  closeModalWindow(modal);
+  closeModalWindow(editProfileModal);
 }
 
 function renderCard(data) {
@@ -105,45 +71,14 @@ function handleAddCardSubmit(e) {
   closeModalWindow(addModal);
 };
 
-const isEscEvent = (evt, action) => {
-  const activePopup = document.querySelector('.modal_open');
-
-  if (evt.which === ESC_KEYCODE) {
-    action(activePopup);
-  }
-};
-
-const handleEscUp = evt => {
-  evt.preventDefault();
-  isEscEvent(evt, closeModalWindow);
-};
-
-const openModalWindow = popup => {
-  popup.classList.add('modal_open');
-  document.addEventListener('keyup', handleEscUp);
-  document.addEventListener('click', clickOut);
-};
-
-const closeModalWindow = popup => {
-  popup.classList.remove('modal_open');
-  document.removeEventListener('keyup', handleEscUp);
-  document.removeEventListener('click', clickOut);
-};
-
-function clickOut(e) {
-  if (e.target.classList.contains("modal_open")) {
-    closeModalWindow(e.target);
-  }
-}
-
 
 // Event Handlers
 
-openModal.addEventListener('click', () => openModalWindow(modal), profileValues());
+openEditProfileModal.addEventListener('click', () => openModalWindow(editProfileModal), fillEditProfileInputs());
 
 openAddModal.addEventListener('click', () => openModalWindow(addModal));
 
-closeModal.addEventListener('click', () => closeModalWindow(modal));
+closeEditProfileModal.addEventListener('click', () => closeModalWindow(editProfileModal));
 
 closeAddModal.addEventListener('click', () => closeModalWindow(addModal));
 
@@ -152,8 +87,3 @@ closePreviewModal.addEventListener('click', () => closeModalWindow(previewModal)
 profileForm.addEventListener('submit', submitInfo);
 
 cardForm.addEventListener('submit', handleAddCardSubmit);
-
-
-// Exports
-
-export { isEscEvent, handleEscUp, openModalWindow, closeModalWindow, };
