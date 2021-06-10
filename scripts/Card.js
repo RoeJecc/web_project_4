@@ -8,11 +8,13 @@ const previewModal = document.querySelector('.modal_type_preview');
 
 // Class
 class Card {
-    constructor(data, template) {
+    constructor({data, handleCardClick}, template) {
         this._text = data.name;
         this._link = data.link;
 
         this._template = template;
+
+        this._handleCardClick = handleCardClick;
     }
 
     _getTemplate() {
@@ -41,7 +43,7 @@ class Card {
     _setEventListeners() {
         this._element.querySelector('.element__button').addEventListener('click', () => this._toggleLikeButton());
         this._element.querySelector('.element__delete-button').addEventListener('click', () => this._onDeleteButtonClick());
-        this._element.querySelector('.element__image').addEventListener('click', () => this._onImagePreview());
+        this._element.querySelector('.element__image').addEventListener('click', () => this._handleCardClick(this._text, this._link));
     }
 
     generateCard() {
@@ -58,3 +60,13 @@ class Card {
 
 // Exports
 export default Card;
+
+// const imageModal = new PopupWithImage('.modal_type_preview');
+// imageModal.setEventListeners();
+
+// new Card(
+//     {
+//         data: cardValues,
+//         handleCardClick: (text, link) => {
+//             imageModal.open(text, link)
+//         }}, template);
