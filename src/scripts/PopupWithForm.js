@@ -1,10 +1,10 @@
 import Popup from "./Popup.js";
 
-class PopupWithForm extends Popup {
+export default class PopupWithForm extends Popup {
     constructor({popupSelector, popupSubmit}) {
         super(popupSelector);
         this._popupSubmit = popupSubmit;
-        this._formElement = this._popupElement.querySelector('.modal__profile');
+        this._formElement = this._popupElement.querySelector(".modal__profile");
         this._submitEventHandler = this._submitEventHandler.bind(this);
     }
 
@@ -12,7 +12,8 @@ class PopupWithForm extends Popup {
         if(!this._popupElement.querySelector('.modal__text-input')) {
             return null
         } else {
-            return [...this._popupElement.querySelectorAll('.modal__text-input')].map(input => input.value);
+            let ourArray = [...this._popupElement.querySelectorAll('.modal__text-input')].map(input => input.value);
+            return {name: ourArray[0], link: ourArray[1]};
         }
     }
 
@@ -28,9 +29,9 @@ class PopupWithForm extends Popup {
         super.setEventListeners();
     }
 
-    open(cardValues) {
+    open(cardInfo) {
         super.open();
-        this._info = cardValues
+        this._info = cardInfo
     }
 
     close() {
@@ -38,5 +39,3 @@ class PopupWithForm extends Popup {
         super.close();
     }
 }
-
-export default PopupWithForm;

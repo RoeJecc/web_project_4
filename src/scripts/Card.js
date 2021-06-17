@@ -1,15 +1,11 @@
 // Imports
-import {isEscEvent, handleEscUp, openModalWindow, closeModalWindow,} from "./utils.js";
-
-const previewImage = document.querySelector('.modal__image');
-const imageTitle = document.querySelector('.modal__image-caption');
-const previewModal = document.querySelector('.modal_type_preview');
+import { openModalWindow, previewModal} from "./utils.js";
 
 
 // Class
-class Card {
+export default class Card {
     constructor({data, handleCardClick}, template) {
-        this._text = data.name;
+        this._name = data.name;
         this._link = data.link;
 
         this._template = template;
@@ -35,38 +31,25 @@ class Card {
 
     _onImagePreview() {
         previewImage.src = this._link;
-        imageTitle.textContent = this._text;
-        previewImage.alt = this._text;
+        imageTitle.textContent = this._name;
+        previewImage.alt = this._name;
         openModalWindow(previewModal);
     }
 
     _setEventListeners() {
         this._element.querySelector('.element__button').addEventListener('click', () => this._toggleLikeButton());
         this._element.querySelector('.element__delete-button').addEventListener('click', () => this._onDeleteButtonClick());
-        this._element.querySelector('.element__image').addEventListener('click', () => this._handleCardClick(this._text, this._link));
+        this._element.querySelector('.element__image').addEventListener('click', () => this._handleCardClick({name: this._name, link: this._link}));
     }
 
     generateCard() {
         this._element = this._getTemplate();
         this._setEventListeners();
 
-        this._element.querySelector('.element__text').textContent = this._text;
+        this._element.querySelector('.element__text').textContent = this._name;
         this._element.querySelector('.element__image').src = this._link;
-        this._element.querySelector('.element__image').alt = this._text;
+        this._element.querySelector('.element__image').alt = this._name;
 
         return this._element;
     }
 }
-
-// Exports
-export default Card;
-
-// const imageModal = new PopupWithImage('.modal_type_preview');
-// imageModal.setEventListeners();
-
-// new Card(
-//     {
-//         data: cardValues,
-//         handleCardClick: (text, link) => {
-//             imageModal.open(text, link)
-//         }}, template);

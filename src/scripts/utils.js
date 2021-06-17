@@ -34,6 +34,9 @@ const validationForm = {
     errorClass: "modal__input-error_active"
 };
 
+const previewModal = document.querySelector('.modal_type_preview');
+const previewImage = document.querySelector('.modal__image');
+
 // Functions
 
 const isEscEvent = (evt, action) => {
@@ -61,12 +64,8 @@ const closeModalWindow = popup => {
     document.removeEventListener('click', clickOut);
 };
 
-function clickOut(e) {
-    if (e.target.classList.contains("modal_open")) {
-      closeModalWindow(e.target);
-    }
-  }
+
 
 // Exports
 
-export { clickOut, isEscEvent, handleEscUp, openModalWindow, closeModalWindow, initialCards, validationForm };
+export { isEscEvent, handleEscUp, openModalWindow, closeModalWindow, initialCards, validationForm, previewModal, previewImage };
