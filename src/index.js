@@ -2,33 +2,29 @@
 
 import "./styles/index.css"; // add import of the main stylesheets file
 import {
+  openEditProfileModal,
+  addModal,
+  editProfileModal,
+  addModalPopup,
+  profileName,
+  profileOccupation,
+  profileFormNameInput,
+  profileFormOccupationInput,
+  profileForm,
   closeModalWindow,
   initialCards,
   validationForm,
+  
 } from "./scripts/utils.js";
 import Card from "./scripts/Card.js";
 import Section from "./scripts/Section.js";
 import PopupWithImage from "./scripts/PopupWithImage.js";
 import PopupWithForm from "./scripts/PopupWithForm.js";
 import UserInfo from "./scripts/UserInfo.js";
-import vectorImg from "./images/Vector.svg";
-import cousteauImg from "./images/cousteau.jpg";
+
 import FormValidator from "./scripts/FormValidator.js";
 
-// Declarations
-const openEditProfileModal = document.querySelector(".profile__edit-button");
-const addModal = document.querySelector(".profile__add-button");
-const editProfileModal = document.querySelector(".modal_type_profile");
-const addModalPopup = document.querySelector(".modal_type_add-card");
-const profileName = document.querySelector(".profile__name");
-const profileOccupation = document.querySelector(".profile__occupation");
-const vectorImage = document.getElementById("vector-image");
-vectorImage.src = vectorImg;
-const cousteauImage = document.getElementById("cousteau-image");
-cousteauImage.src = cousteauImg;
-const profileForm = document.forms.profile;
-const profileFormNameInput = profileForm.elements.name;
-const profileFormOccupationInput = profileForm.elements.occupation;
+
 
 // Form Validation
 const editFormValidator = new FormValidator(validationForm, editProfileModal);
