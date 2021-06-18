@@ -1,6 +1,6 @@
 // Imports
 
-import "./styles/index.css"; // add import of the main stylesheets file
+import "../styles/index.css"; // add import of the main stylesheets file
 import {
   openEditProfileModal,
   addModal,
@@ -10,20 +10,25 @@ import {
   profileOccupation,
   profileFormNameInput,
   profileFormOccupationInput,
-  profileForm,
-  closeModalWindow,
   initialCards,
   validationForm,
   
-} from "./scripts/utils.js";
-import Card from "./scripts/Card.js";
-import Section from "./scripts/Section.js";
-import PopupWithImage from "./scripts/PopupWithImage.js";
-import PopupWithForm from "./scripts/PopupWithForm.js";
-import UserInfo from "./scripts/UserInfo.js";
+} from "../scripts/utils.js";
+import Card from "../scripts/Card.js";
+import Section from "../scripts/Section.js";
+import PopupWithImage from "../scripts/PopupWithImage.js";
+import PopupWithForm from "../scripts/PopupWithForm.js";
+import UserInfo from "../scripts/UserInfo.js";
+import FormValidator from "../scripts/FormValidator.js";
 
-import FormValidator from "./scripts/FormValidator.js";
+// Visual Components
+import vectorImg from "../images/Vector.svg";
+import cousteauImg from "../images/cousteau.jpg";
 
+const vectorImage = document.getElementById("vector-image");
+vectorImage.src = vectorImg;
+const cousteauImage = document.getElementById("cousteau-image");
+cousteauImage.src = cousteauImg;
 
 
 // Form Validation
@@ -38,19 +43,19 @@ const userInfo = new UserInfo({
 });
 
 // Submit Forms
-function submitInfo(event) {
-  event.preventDefault();
-  profileName.textContent = profileFormNameInput.value;
-  profileOccupation.textContent = profileFormOccupationInput.value;
-  closeModalWindow(editProfileModal);
-}
-profileForm.addEventListener("submit", submitInfo);
+// function submitInfo(event) {
+//   event.preventDefault();
+//   profileName.textContent = profileFormNameInput.value;
+//   profileOccupation.textContent = profileFormOccupationInput.value;
+//   closeModalWindow(editProfileModal);
+// }
+// profileForm.addEventListener("submit", submitInfo);
 
 
 // Edit Profile Popup
 const editPopup = new PopupWithForm({
   popupSelector: ".modal_type_profile",
-  handleFormSubmit: (data) => {
+  popupSubmit: (data) => {
     userInfo.setUserInfo(data);
   },
 });

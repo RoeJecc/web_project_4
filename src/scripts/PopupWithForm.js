@@ -17,9 +17,9 @@ export default class PopupWithForm extends Popup {
         }
     }
 
-    _submitEventHandler(e){
-        e.preventDefault();
-        const inputSubmitValue = this._getInputValues() || this._info;
+    _submitEventHandler(){
+        
+        const inputSubmitValue = this._getInputValues();
         this._popupSubmit(inputSubmitValue);
         this.close();
     }
@@ -27,11 +27,6 @@ export default class PopupWithForm extends Popup {
     setEventListeners() {
         this._popupElement.addEventListener('submit', this._submitEventHandler);
         super.setEventListeners();
-    }
-
-    open(cardInfo) {
-        super.open();
-        this._info = cardInfo
     }
 
     close() {

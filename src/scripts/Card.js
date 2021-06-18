@@ -17,23 +17,15 @@ export default class Card {
         const cardElement = document.querySelector(this._template).content.querySelector('.element').cloneNode(true);
 
         return cardElement;
-    };
+    }
 
     _toggleLikeButton() {
-        const likeButton = this._element.querySelector(".element__button")
-        likeButton.classList.toggle('element__button_active');
-    };
+        this._element.querySelector(".element__button").classList.toggle('element__button_active');
+    }
 
     _onDeleteButtonClick() {
         const deleteButton = this._element.querySelector(".element__delete-button");
         deleteButton.closest(".element").remove();
-    }
-
-    _onImagePreview() {
-        previewImage.src = this._link;
-        imageTitle.textContent = this._name;
-        previewImage.alt = this._name;
-        openModalWindow(previewModal);
     }
 
     _setEventListeners() {

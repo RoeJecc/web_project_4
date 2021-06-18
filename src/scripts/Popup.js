@@ -1,3 +1,5 @@
+import { escKey } from "./utils";
+
 export default class Popup {
     constructor(popupSelector) {
         this._popupElement = document.querySelector(popupSelector);
@@ -15,7 +17,7 @@ export default class Popup {
     }
 
     _handleEscClose(e) {
-        if(e.which == 27) {
+        if(e.which == escKey) {
             this.close();
         }
     }
@@ -23,7 +25,7 @@ export default class Popup {
     setEventListeners() {
         this._popupElement.addEventListener('click', (e) => {
             if(e.target.classList.contains('modal__close-button') || e.target.classList.contains('modal_open')){
-                this.close(this._popupElement);
+                this.close();
             }
         })     
     }
