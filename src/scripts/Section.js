@@ -11,9 +11,6 @@ class Section {
     addItem(cardElement) {
         this._container.prepend(cardElement);
     }
-    prepend(cardElement) {
-        this._container.prepend(cardElement);
-    }
 }
 
 

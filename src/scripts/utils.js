@@ -1,5 +1,3 @@
-
-
 const initialCards = [
   {
     name: "Yosemite Valley",
@@ -67,4 +65,4 @@ export {
   previewModal,
   previewImage,
   escKey
-};
+}
