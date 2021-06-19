@@ -1,8 +1,3 @@
-// Imports
-import { openModalWindow, previewModal} from "./utils.js";
-
-
-// Class
 export default class Card {
     constructor({data, handleCardClick}, template) {
         this._name = data.name;
@@ -24,8 +19,7 @@ export default class Card {
     }
 
     _onDeleteButtonClick() {
-        const deleteButton = this._element.querySelector(".element__delete-button");
-        deleteButton.closest(".element").remove();
+        this._element.remove();
     }
 
     _setEventListeners() {

@@ -9,10 +9,8 @@ export default class PopupWithForm extends Popup {
     }
 
     _getInputValues() {
-        if(!this._popupElement.querySelector('.modal__text-input')) {
-            return null
-        } else {
-            let ourArray = [...this._popupElement.querySelectorAll('.modal__text-input')].map(input => input.value);
+        if(this._popupElement.querySelector('.modal__text-input')) {
+            const ourArray = [...this._popupElement.querySelectorAll('.modal__text-input')].map(input => input.value);
             return {name: ourArray[0], link: ourArray[1]};
         }
     }

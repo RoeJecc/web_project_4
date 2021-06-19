@@ -86,7 +86,6 @@ addModal.addEventListener("click", () => {
 // Section
 const cardSection = new Section(
   {
-    items: initialCards,
     renderer: (data) => {
       const cardElement = renderCard(data);
       cardSection.addItem(cardElement);
@@ -95,7 +94,7 @@ const cardSection = new Section(
   ".elements"
 );
 
-cardSection.renderer();
+cardSection.renderer(initialCards);
 
 // Preview Image Popup
 const imagePopup = new PopupWithImage(".modal_type_preview");
