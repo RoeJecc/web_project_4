@@ -5,7 +5,7 @@ class Section {
     }
 
     renderer(cards) {
-        cards.forEach((item) => this._renderer(item));
+        cards.forEach((item) => this._container.append(this._renderer(item)));
     }
     addItem(cardElement) {
         this._container.prepend(cardElement);
