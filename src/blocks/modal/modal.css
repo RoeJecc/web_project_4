@@ -1,5 +1,5 @@
 @import url(./__form-submit/modal__form-submit.css);
-@import url(./__text-input/_type/modal__text-input_type_name.css);
+
 @import url(./__text-input/_type/modal__text-input_type_occupation.css);
 @import url(./__profile/modal__profile.css);
 @import url(./__title/modal__title.css);
@@ -14,7 +14,7 @@
 @import url(./__error/modal__error.css);
 @import url(./__form-submit/_disabled/modal__form-submit_disabled.css);
 @import url(./__error/_active/modal__error_active.css);
-
+@import url(./__text-input/_type/modal__text-input_type_name.css);
 
 .modal{
     display: flex;
@@ -29,3 +29,4 @@
     opacity: 0;
     transition: visibility 0s linear .5s, opacity .4s linear;
 }
+

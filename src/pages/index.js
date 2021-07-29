@@ -89,7 +89,16 @@ openEditProfileModal.addEventListener("click", () => {
   editPopup.open();
 });
 
-// Add Card Popup
+// Delete Card Popup
+const deletePopup = new PopupWithForm({
+  popupSelector: ".modal_type_delete-card",
+  popupSubmit: (data) => {
+    userInfo.setUserInfo(data);
+  }
+});
+deletePopup.setEventListeners();
+
+
 
 // Section
 
@@ -105,8 +114,9 @@ function renderCard(data) {
         imagePopup.open({ name, link });
       },
       handleDeleteClick: (data) => {
+        deletePopup.open(data);
         api.removeCard(data).then(() => {
-          newCard.onDeleteButtonClick(data);
+          ourCard.handleDeleteClick(data);
         });
       },
     },

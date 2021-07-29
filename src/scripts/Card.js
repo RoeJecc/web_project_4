@@ -33,7 +33,8 @@ export default class Card {
         } 
     }
 
-    onDeleteButtonClick() {
+    _handleDeleteClick() {
+        e.preventDefault();
         this._element.remove();
     }
 

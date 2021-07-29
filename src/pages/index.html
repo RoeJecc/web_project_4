@@ -54,13 +54,13 @@
             <form name="card" class="modal__profile modal__profile_add">
                 <h3 class="modal__title">New place</h3>
                 <input id="newCardTitle" name="newCardTitle" type="text"
-                    class="modal__text-input modal__text-input_type_title" required placeholder="Title" minlength="1"
+                    class="modal__text-input modal__text-input_type_name" required placeholder="Title" minlength="1"
                     maxlength="30">
                 <span id="newCardTitle-error" class="modal__error"></span>
                 <input id="newCardURL" name="newCardURL" type="url" placeholder="Image link" required
                     class="modal__text-input modal__text-input_type_url">
                 <span id="newCardURL-error" class="modal__error"></span>
-                <button class="modal__form-submit modal__form-submit_create" type="submit">Create</button>
+                <button class="modal__form-submit" type="submit">Create</button>
             </form>
         </div>
     </div>
@@ -74,6 +74,18 @@
             </figure>
         </div>
     </div>
+
+    <div class="modal modal_type_delete-card">
+        <div class="modal__container">
+            <form class="modal__form" novalidate>
+                <h2 class="modal__title modal__title_delete-card">Are you sure?</h2>
+                <button class="modal__form-submit modal__form-submit_delete" type="submit">Yes</button>
+                <button class="modal__close-button" type="button"></button>
+            </form>
+        </div>
+    </div>
+
+
     <template id="card-template" class="card__template">
         <div class="element">
             <button class="element__delete-button" type="button"></button>
@@ -84,18 +96,7 @@
             </div>
         </div>
     </template>
-<script> </script>
+    <script> </script>
 </body>
 
 </html>
-
-
-<!-- <div class="modal modal_type_delete-card">
-    <div class="modal__container">
-      <form action="#" class="modal__form delete-form" novalidate>
-        <h2 class="modal__title">Are you sure?</h2>
-            <button class="modal__save" type="submit" aria-label="Create">Yes</button>
-            <button class="modal__close-button" type="reset" aria-label="Close Form"></button>
-        </form>
-    </div>
-</div> -->
