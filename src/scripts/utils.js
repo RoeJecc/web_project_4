@@ -10,10 +10,12 @@ const validationForm = {
 // Declarations
 const openEditProfileModal = document.querySelector(".profile__edit-button");
 const addModal = document.querySelector(".profile__add-button");
+const avatarModal = document.querySelector(".profile__avatar-button");
 const editProfileModal = document.querySelector(".modal_type_profile");
 const addModalPopup = document.querySelector(".modal_type_add-card");
 const profileName = document.querySelector(".profile__name");
 const profileOccupation = document.querySelector(".profile__occupation");
+const deleteModal = document.querySelector(".modal_type_delete-card");
 const profileForm = document.forms.profile;
 const profileFormNameInput = profileForm.elements.name;
 const profileFormOccupationInput = profileForm.elements.occupation;
@@ -25,6 +27,7 @@ const profileAvatar = document.querySelector(".profile__avatar");
 // Exports
 
 export {
+  deleteModal,
   profileAvatar,
   openEditProfileModal,
   addModal,
@@ -38,5 +41,6 @@ export {
   validationForm,
   previewModal,
   previewImage,
-  escKey
+  escKey,
+  avatarModal
 }

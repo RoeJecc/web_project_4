@@ -14,7 +14,6 @@ export default class Api {
       .catch((err) => console.log(err));
   }
 
-  //GET specified URL -user-info
   getUserInfo() {
     return fetch(this._baseURL + "/users/me", {
       headers: this._headers,
@@ -26,11 +25,9 @@ export default class Api {
   }
 
   getAppInfo() {
-    //gather all info together and render all at once
     return Promise.all([this.getUserInfo(), this.getInitialCards()]);
   }
 
-  //POST speicifed url -cards
   addCard({ name, link }) {
     return fetch(this._baseURL + "/cards", {
       headers: this._headers,
@@ -46,7 +43,6 @@ export default class Api {
       .catch((err) => console.log(err));
   }
 
-  // //DELETE specified url =cardID
   removeCard(cardID) {
     return (
       fetch(this._baseURL + "/cards/" + cardID, {
@@ -56,13 +52,10 @@ export default class Api {
         .then((res) =>
           res.ok ? res.json() : Promise.reject("Error" + res.statusText)
         )
-        // .then(res => res.remove())
         .catch((err) => console.log(err))
     );
   }
 
-  //PUT specified url cardID
-  //DELETE specified url cardID
   addLike(cardID) {
     return (
       fetch(this._baseURL + "/cards/likes/" + cardID, {
@@ -72,7 +65,6 @@ export default class Api {
         .then((res) =>
           res.ok ? res.json() : Promise.reject("Error" + res.statusText)
         )
-        //.then(res => res.remove(cardID))
         .catch((err) => console.log(err))
     );
   }
@@ -86,12 +78,10 @@ export default class Api {
         .then((res) =>
           res.ok ? res.json() : Promise.reject("Error" + res.statusText)
         )
-        //.then(res => res.remove(cardID))
         .catch((err) => console.log(err))
     );
   }
 
-  //PATCH user-info
   setUserInfo({ name, about }) {
     return fetch(this._baseURL + "/users/me/", {
       method: "PATCH",
@@ -110,7 +100,6 @@ export default class Api {
       .catch((err) => console.log(err));
   }
 
-  //PATCH avatar
   setUserAvatar(avatar) {
     return fetch(this._baseURL + "/users/me/avatar/", {
       headers: this._headers,

@@ -1,9 +1,10 @@
 export default class Card {
-    constructor({data, handleCardClick, handleDeleteClick},userId, template) {
+    constructor({data, handleCardClick, handleDeleteClick, likeHandler},userId, template) {
         this._name = data.name;
         this._link = data.link;
         this._owner = data.owner;
         this._userId = userId;
+        this._likes = data.likes;
 
         this._template = template;
         this._id = data._id;
@@ -11,6 +12,8 @@ export default class Card {
         this._handleDeleteClick = handleDeleteClick
 
         this._handleCardClick = handleCardClick;
+
+        this._likeHandler = likeHandler
     }
 
     id() {
@@ -23,8 +26,22 @@ export default class Card {
         return cardElement;
     }
 
-    _toggleLikeButton() {
-        this._element.querySelector(".element__button").classList.toggle('element__button_active');
+    isLiked(){
+        return this._likes.some(item => item._id === this._userId);
+    }
+
+    showLikes(){
+        this._cardLikes.textContent = this._likes.length;
+        if (this.isLiked()) {
+            this._likeButton.classList.add('element__button_active');
+        } else {
+            this._likeButton.classList.remove('element__button_active');
+        }
+    }
+
+    updateLikes(likes) {
+        this._likes = likes;
+        this.showLikes();
     }
 
     _showDeleteIcon(){ 
@@ -33,14 +50,9 @@ export default class Card {
         } 
     }
 
-    _handleDeleteClick() {
-        e.preventDefault();
-        this._element.remove();
-    }
-
     _setEventListeners() {
-        this._element.querySelector('.element__button').addEventListener('click', () => this._toggleLikeButton());
-        this._element.querySelector('.element__delete-button').addEventListener('click', () => this._handleDeleteClick(this.id()));
+        this._element.querySelector('.element__button').addEventListener('click', () => this._likeHandler(this, this._id));
+        this._element.querySelector('.element__delete-button').addEventListener('click', () => this._handleDeleteClick([this._id, this._element]));
         this._element.querySelector('.element__image').addEventListener('click', () => this._handleCardClick({name: this._name, link: this._link}));
     }
 
@@ -55,7 +67,12 @@ export default class Card {
         this._element.querySelector('.element__image').alt = this._name;
         this._element.id = this._id;
 
+        this._cardLikes = this._element.querySelector('.element__likes');
+        this._likeButton = this._element.querySelector('.element__button');
+
         this._showDeleteIcon();
+        this.showLikes();
+
 
         return this._element;
     }

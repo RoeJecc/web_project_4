@@ -14,7 +14,14 @@
     </header>
     <main class="content">
         <section class="profile">
-            <img class="profile__avatar" alt="Cousteau Image" id="cousteau-image" src="images/cousteau.jpg">
+
+            <div class="profile__avatar-container">
+                <img class="profile__avatar" alt="Cousteau Image" id="cousteau-image">
+                <div class="profile__overlay">
+                    <button class="profile__avatar-button" type="button" name="avatar"></button>
+                </div>
+            </div>
+
             <div class="profile__info">
                 <h1 class="profile__name"></h1>
                 <button class="profile__edit-button" type="button" name="edit"></button>
@@ -77,10 +84,24 @@
 
     <div class="modal modal_type_delete-card">
         <div class="modal__container">
-            <form class="modal__form" novalidate>
+            <button class="modal__close-button" type="button"></button>
+            <form class="modal__profile modal__profile_delete-card" novalidate>
                 <h2 class="modal__title modal__title_delete-card">Are you sure?</h2>
-                <button class="modal__form-submit modal__form-submit_delete" type="submit">Yes</button>
-                <button class="modal__close-button" type="button"></button>
+                <button class="modal__form-submit" type="submit">Yes</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="modal modal_type_avatar">
+        <div class="modal__container">
+            <button class="modal__close-button" type="button"></button>
+            <form class="modal__profile modal__profile_avatar" novalidate>
+                <h2 class="modal__title">Change profile picture</h2>
+                <input id="newAvatarURL" name="newAvatar" type="url" required placeholder="Image link" class="modal__text-input modal__text-input_type_url">
+                <span id="newAvatarURL-error" class="modal__error"></span>
+                <button class="modal__form-submit" type="submit">Submit</button>
+               
+                
             </form>
         </div>
     </div>
@@ -92,7 +113,11 @@
             <img class="element__image">
             <div class="element__info">
                 <h2 class="element__text"></h2>
-                <button class="element__button" type="button"></button>
+                <div class="element__like-container">
+                    <button class="element__button" type="button"></button>
+                    <p class="element__likes"></p>
+                </div>
+                
             </div>
         </div>
     </template>

@@ -2,7 +2,7 @@
 
 import "../styles/index.css"; // add import of the main stylesheets file
 import {
-  prifileAvatar,
+  deleteModal,
   openEditProfileModal,
   addModal,
   editProfileModal,
@@ -13,6 +13,7 @@ import {
   profileFormOccupationInput,
   validationForm,
   profileAvatar,
+  avatarModal,
 } from "../scripts/utils.js";
 import Card from "../scripts/Card.js";
 import Section from "../scripts/Section.js";
@@ -24,11 +25,11 @@ import Api from "../scripts/Api.js";
 
 // Visual Components
 import vectorImg from "../images/Vector.svg";
-import cousteauImg from "../images/cousteau.jpg";
 
 const vectorImage = document.getElementById("vector-image");
 vectorImage.src = vectorImg;
 
+// Declare API
 const api = new Api({
   baseURL: "https://around.nomoreparties.co/v1/group-12",
   headers: {
@@ -44,39 +45,41 @@ const cardSection = new Section(
   ".elements"
 );
 
-api.getUserInfo().then((res) => {
-  userInfo.setUserInfo({ name: res.name, link: res.about, avatar: res.avatar });
-
-  const cousteauImage = document.getElementById("cousteau-image");
-  cousteauImage.src = res.avatar;
-});
 
 // Form Validation
 const editFormValidator = new FormValidator(validationForm, editProfileModal);
 const cardFormValidator = new FormValidator(validationForm, addModalPopup);
+const avatarFormValidator = new FormValidator(validationForm, avatarModal);
 editFormValidator.enableValidation();
 cardFormValidator.enableValidation();
+avatarFormValidator.enableValidation();
 
 const userInfo = new UserInfo({
-  nameSelector: profileName,
-  jobSelector: profileOccupation,
-  avatarSelector: profileAvatar,
+  name: ".profile__name",
+  link: ".profile__occupation",
+  avatar: ".profile__avatar",
 });
 
-// Submit Forms
-// function submitInfo(event) {
-//   event.preventDefault();
-//   profileName.textContent = profileFormNameInput.value;
-//   profileOccupation.textContent = profileFormOccupationInput.value;
-//   closeModalWindow(editProfileModal);
-// }
-// profileForm.addEventListener("submit", submitInfo);
+
 
 // Edit Profile Popup
+
+function handleEditButton({name, link}){
+  loadingModal(true, editPopup)
+  api.setUserInfo({ name: name, about: link })
+  .then(res => {
+    profileName.textContent = res.name;
+    profileOccupation.textContent = res.about;
+    loadingModal(false, editPopup);
+    editPopup.close();
+  })
+  .catch(err => console.log(err))
+}
+
 const editPopup = new PopupWithForm({
   popupSelector: ".modal_type_profile",
-  popupSubmit: (data) => {
-    userInfo.setUserInfo(data);
+  popupSubmit: ({ name , link }) => {
+    handleEditButton({ name , link });
   },
 });
 
@@ -89,18 +92,7 @@ openEditProfileModal.addEventListener("click", () => {
   editPopup.open();
 });
 
-// Delete Card Popup
-const deletePopup = new PopupWithForm({
-  popupSelector: ".modal_type_delete-card",
-  popupSubmit: (data) => {
-    userInfo.setUserInfo(data);
-  }
-});
-deletePopup.setEventListeners();
 
-
-
-// Section
 
 // Preview Image Popup
 const imagePopup = new PopupWithImage(".modal_type_preview");
@@ -113,19 +105,41 @@ function renderCard(data) {
       handleCardClick: ({ name, link }) => {
         imagePopup.open({ name, link });
       },
-      handleDeleteClick: (data) => {
-        deletePopup.open(data);
-        api.removeCard(data).then(() => {
-          ourCard.handleDeleteClick(data);
-        });
+      handleDeleteClick: (cardInfo) => {
+        deletePopup.open(cardInfo);
+      },
+      likeHandler: (cardElement, cardID) => {
+        cardLikeCounter(cardElement, cardID);
       },
     },
     userId,
     "#card-template"
-  )
-  return ourCard.generateCard()
+  );
+  return ourCard.generateCard();
 }
 
+
+// Card Likes
+function cardLikeCounter(cardElement, cardID) {
+  if (cardElement.isLiked()) {
+    api
+      .removeLike(cardID)
+      .then((res) => {
+        cardElement.updateLikes(res.likes);
+      })
+      .catch((err) => console.log(err));
+  } else {
+    api
+      .addLike(cardID)
+      .then((res) => {
+        cardElement.updateLikes(res.likes);
+      })
+      .catch((err) => console.log(err));
+  }
+}
+
+
+// Add Card and Avatar Popup
 api.getAppInfo().then(([userData, cardListDetail]) => {
   userId = userData._id;
   userInfo.setUserInfo(userData.name, userData.about, userData.avatar);
@@ -135,8 +149,8 @@ api.getAppInfo().then(([userData, cardListDetail]) => {
     popupSelector: ".modal_type_add-card",
     popupSubmit: (data) => {
       api.addCard(data).then((res) => {
-        const cardElement = renderCard(res);
-        cardSection.addItem(cardElement);
+        const newCard = renderCard(res);
+        cardSection.addItem(newCard);
       });
     },
   });
@@ -144,6 +158,59 @@ api.getAppInfo().then(([userData, cardListDetail]) => {
   addModal.addEventListener("click", () => {
     addCardPopup.open();
   });
+
+  const avatarPopup = new PopupWithForm({
+    popupSelector: ".modal_type_avatar",
+    popupSubmit: ({ name: avatar }) => {
+      handleAvatar(avatar)
+    },
+  });
+  avatarPopup.setEventListeners();
+  avatarModal.addEventListener("click", () => {
+    cardFormValidator.disableButton();
+    avatarPopup.open();
+  });
 });
 
 let userId;
+
+
+// Avatar Popup Handler
+function handleAvatar(avatar){
+  loadingModal(true, profileAvatar);
+
+  api.setUserAvatar(avatar)
+  .then(res => {
+    profileAvatar.src = res.avatar;
+    loadingModal(false, profileAvatar);
+    avatarPopup.close();
+  })
+  .catch(err => console.log(err));
+}
+
+
+// Delete Card Popup
+const deletePopup = new PopupWithForm({
+  popupSelector: ".modal_type_delete-card",
+  popupSubmit: ([ cardID , element ]) => {
+    loadingModal(true, deleteModal);
+    element.remove();
+    api.removeCard(cardID)
+    .then(() => {
+      loadingModal(false, deleteModal);
+      deletePopup.close();
+      
+    })
+    .catch(err => console.log(err));
+  }
+})
+deletePopup.setEventListeners();
+
+// Loading UI
+function loadingModal(isLoading, modal){
+  if(isLoading) {
+    document.querySelector('.modal__form-submit').textContent = "Saving...";
+  } else {
+    document.querySelector('.modal__form-submit').textContent = "Save";
+  }
+}
