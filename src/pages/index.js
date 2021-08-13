@@ -156,6 +156,7 @@ api.getAppInfo().then(([userData, cardListDetail]) => {
   });
   addCardPopup.setEventListeners();
   addModal.addEventListener("click", () => {
+    cardFormValidator.disableButton();
     addCardPopup.open();
   });
 
@@ -166,17 +167,24 @@ api.getAppInfo().then(([userData, cardListDetail]) => {
     },
   });
   avatarPopup.setEventListeners();
+  
   avatarModal.addEventListener("click", () => {
-    cardFormValidator.disableButton();
+    // avatarFormValidator.disableButton();
     avatarPopup.open();
+    
   });
+  
 });
+
+
+
 
 let userId;
 
 
 // Avatar Popup Handler
 function handleAvatar(avatar){
+  event.preventDefault();
   loadingModal(true, profileAvatar);
 
   api.setUserAvatar(avatar)
@@ -193,12 +201,14 @@ function handleAvatar(avatar){
 const deletePopup = new PopupWithForm({
   popupSelector: ".modal_type_delete-card",
   popupSubmit: ([ cardID , element ]) => {
+    event.preventDefault();
     loadingModal(true, deleteModal);
-    element.remove();
-    api.removeCard(cardID)
-    .then(() => {
+    
+    api.removeCard(cardID).then(() => {
+      
       loadingModal(false, deleteModal);
       deletePopup.close();
+      element.remove();
       
     })
     .catch(err => console.log(err));

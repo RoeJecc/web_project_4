@@ -36,7 +36,7 @@
     </footer>
     <div class="modal modal_type_profile">
         <div class="modal__container">
-            <button class="modal__close-button modal__close-button_profile" type="button" name="close"></button>
+            <button class="modal__close-button modal__close-button_profile" type="reset" name="close"></button>
             <form name="profile" class="modal__profile">
                 <h3 class="modal__title">Edit Profile</h3>
                 <input id="name" name="name" type="text" class="modal__text-input modal__text-input_type_name" required
@@ -57,7 +57,7 @@
 
     <div class="modal modal_type_add-card">
         <div class="modal__container">
-            <button class="modal__close-button modal__close-button_add-card" type="button" name="close"></button>
+            
             <form name="card" class="modal__profile modal__profile_add">
                 <h3 class="modal__title">New place</h3>
                 <input id="newCardTitle" name="newCardTitle" type="text"
@@ -68,13 +68,14 @@
                     class="modal__text-input modal__text-input_type_url">
                 <span id="newCardURL-error" class="modal__error"></span>
                 <button class="modal__form-submit" type="submit">Create</button>
+                <button class="modal__close-button modal__close-button_add-card" type="reset" name="close"></button>
             </form>
         </div>
     </div>
 
     <div class="modal modal_type_preview">
         <div class="modal__container modal__container_preview">
-            <button class="modal__close-button modal__close-button_preview" type="button" name="close"></button>
+            <button class="modal__close-button modal__close-button_preview" type="reset" name="close"></button>
             <figure class="modal__image-container">
                 <img class="modal__image" alt="Card Image">
                 <figcaption class="modal__image-caption"></figcaption>
@@ -84,9 +85,9 @@
 
     <div class="modal modal_type_delete-card">
         <div class="modal__container">
-            <button class="modal__close-button" type="button"></button>
+            <button class="modal__close-button modal__close-button_delete-card" type="reset"></button>
             <form class="modal__profile modal__profile_delete-card" novalidate>
-                <h2 class="modal__title modal__title_delete-card">Are you sure?</h2>
+                <h3 class="modal__title modal__title_delete-card">Are you sure?</h3>
                 <button class="modal__form-submit" type="submit">Yes</button>
             </form>
         </div>
@@ -94,10 +95,10 @@
 
     <div class="modal modal_type_avatar">
         <div class="modal__container">
-            <button class="modal__close-button" type="button"></button>
-            <form class="modal__profile modal__profile_avatar" novalidate>
-                <h2 class="modal__title">Change profile picture</h2>
-                <input id="newAvatarURL" name="newAvatar" type="url" required placeholder="Image link" class="modal__text-input modal__text-input_type_url">
+            <button class="modal__close-button modal__close-button_avatar" type="reset" name="close"></button>
+            <form class="modal__profile modal__profile_avatar">
+                <h3 class="modal__title">Change profile picture</h3>
+                <input id="newAvatarURL" name="newAvatarURL" type="url" required placeholder="Image link" class="modal__text-input modal__text-input_type_url">
                 <span id="newAvatarURL-error" class="modal__error"></span>
                 <button class="modal__form-submit" type="submit">Submit</button>
                
