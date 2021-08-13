@@ -14,6 +14,7 @@ import {
   validationForm,
   profileAvatar,
   avatarModal,
+  avatarForm
 } from "../scripts/utils.js";
 import Card from "../scripts/Card.js";
 import Section from "../scripts/Section.js";
@@ -49,7 +50,7 @@ const cardSection = new Section(
 // Form Validation
 const editFormValidator = new FormValidator(validationForm, editProfileModal);
 const cardFormValidator = new FormValidator(validationForm, addModalPopup);
-const avatarFormValidator = new FormValidator(validationForm, avatarModal);
+const avatarFormValidator = new FormValidator(validationForm, avatarForm);
 editFormValidator.enableValidation();
 cardFormValidator.enableValidation();
 avatarFormValidator.enableValidation();
@@ -169,7 +170,7 @@ api.getAppInfo().then(([userData, cardListDetail]) => {
   avatarPopup.setEventListeners();
   
   avatarModal.addEventListener("click", () => {
-    // avatarFormValidator.disableButton();
+    avatarFormValidator.disableButton();
     avatarPopup.open();
     
   });

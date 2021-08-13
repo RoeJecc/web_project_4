@@ -23,10 +23,12 @@ const escKey = 27;
 const previewModal = document.querySelector(".modal_type_preview");
 const previewImage = document.querySelector(".modal__image");
 const profileAvatar = document.querySelector(".profile__avatar");
+const avatarForm = document.querySelector(".modal__profile_avatar");
 
 // Exports
 
 export {
+  avatarForm,
   deleteModal,
   profileAvatar,
   openEditProfileModal,
