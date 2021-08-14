@@ -4,17 +4,20 @@ export default class Api {
     this._headers = headers;
   }
 
-  _checkServerResponse(){
-    res.ok ? res.json() : Promise.reject("Error" + res.statusText)
+  _checkServerResponse(res){
+    if (res.ok) {
+      return res.json();
+    }
+    return Promise.reject("Error" + res.statusText)
   }
 
   getInitialCards() {
     return fetch(this._baseURL + "/cards", {
       headers: this._headers,
     })
-      .then((res) =>
-        res.ok ? res.json() : Promise.reject("Error" + res.statusText)
-      )
+      .then((res) => {
+        return this._checkServerResponse(res)
+      })
       
   }
 
@@ -22,9 +25,9 @@ export default class Api {
     return fetch(this._baseURL + "/users/me", {
       headers: this._headers,
     })
-      .then((res) =>
-        res.ok ? res.json() : Promise.reject("Error" + res.statusText)
-      )
+      .then((res) => {
+        return this._checkServerResponse(res)
+      })
       
   }
 
@@ -41,9 +44,9 @@ export default class Api {
         link,
       }),
     })
-      .then((res) =>
-        res.ok ? res.json() : Promise.reject("Error" + res.statusText)
-      )
+      .then((res) => {
+        return this._checkServerResponse(res)
+      })
       
   }
 
@@ -53,9 +56,9 @@ export default class Api {
         headers: this._headers,
         method: "DELETE",
       })
-        .then((res) =>
-          res.ok ? res.json() : Promise.reject("Error" + res.statusText)
-        )
+        .then((res) => {
+          return this._checkServerResponse(res)
+        })
         
     );
   }
@@ -66,9 +69,9 @@ export default class Api {
         headers: this._headers,
         method: "PUT",
       })
-        .then((res) =>
-          res.ok ? res.json() : Promise.reject("Error" + res.statusText)
-        )
+        .then((res) => {
+          return this._checkServerResponse(res)
+        })
         
     );
   }
@@ -79,10 +82,9 @@ export default class Api {
         headers: this._headers,
         method: "DELETE",
       })
-        .then((res) =>
-          res.ok ? res.json() : Promise.reject("Error" + res.statusText)
-        )
-        
+        .then((res) => {
+          return this._checkServerResponse(res)
+        })
     );
   }
 
@@ -98,10 +100,9 @@ export default class Api {
         about,
       }),
     })
-      .then((res) =>
-        res.ok ? res.json() : Promise.reject("Error" + res.statusText)
-      )
-      .catch((err) => console.log(err));
+      .then((res) => {
+        return this._checkServerResponse(res)
+      })
   }
 
   setUserAvatar(avatar) {
@@ -112,9 +113,8 @@ export default class Api {
         avatar,
       }),
     })
-      .then((res) =>
-        res.ok ? res.json() : Promise.reject("Error" + res.statusText)
-      )
-      .catch((err) => console.log(err));
+      .then((res) => {
+        return this._checkServerResponse(res)
+      })
   }
 }

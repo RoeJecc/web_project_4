@@ -63,8 +63,12 @@ export default class Card {
         this._cardTrash = this._element.querySelector('.element__delete-button');
 
         this._element.querySelector('.element__text').textContent = this._name;
-        this._element.querySelector('.element__image').src = this._link;
-        this._element.querySelector('.element__image').alt = this._name;
+
+        this._cardImage = this._element.querySelector('.element__image');
+
+        this._cardImage.setAttribute('src', this._link);
+        this._cardImage.setAttribute('alt', this._name);
+
         this._element.id = this._id;
 
         this._cardLikes = this._element.querySelector('.element__likes');
