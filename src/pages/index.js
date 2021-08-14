@@ -14,12 +14,14 @@ import {
   validationForm,
   profileAvatar,
   avatarModal,
-  avatarForm
+  avatarForm,
+  loadingModal
 } from "../scripts/utils.js";
 import Card from "../scripts/Card.js";
 import Section from "../scripts/Section.js";
 import PopupWithImage from "../scripts/PopupWithImage.js";
 import PopupWithForm from "../scripts/PopupWithForm.js";
+import PopupWithConfirm from "../scripts/PopupWithConfirm.js";
 import UserInfo from "../scripts/UserInfo.js";
 import FormValidator from "../scripts/FormValidator.js";
 import Api from "../scripts/Api.js";
@@ -71,10 +73,13 @@ function handleEditButton({name, link}){
   .then(res => {
     profileName.textContent = res.name;
     profileOccupation.textContent = res.about;
-    loadingModal(false, editPopup);
+    
     editPopup.close();
   })
   .catch(err => console.log(err))
+  .finally(() => {
+    loadingModal(false, editPopup);
+  })
 }
 
 const editPopup = new PopupWithForm({
@@ -100,7 +105,7 @@ const imagePopup = new PopupWithImage(".modal_type_preview");
 imagePopup.setEventListeners();
 
 function renderCard(data) {
-  let ourCard = new Card(
+  const card = new Card(
     {
       data,
       handleCardClick: ({ name, link }) => {
@@ -116,7 +121,7 @@ function renderCard(data) {
     userId,
     "#card-template"
   );
-  return ourCard.generateCard();
+  return card.generateCard();
 }
 
 
@@ -140,44 +145,49 @@ function cardLikeCounter(cardElement, cardID) {
 }
 
 
-// Add Card and Avatar Popup
+// Set User Info
 api.getAppInfo().then(([userData, cardListDetail]) => {
   userId = userData._id;
   userInfo.setUserInfo(userData.name, userData.about, userData.avatar);
   cardSection.renderer(cardListDetail);
 
-  const addCardPopup = new PopupWithForm({
-    popupSelector: ".modal_type_add-card",
-    popupSubmit: (data) => {
-      api.addCard(data).then((res) => {
-        const newCard = renderCard(res);
-        cardSection.addItem(newCard);
-      });
-    },
-  });
-  addCardPopup.setEventListeners();
-  addModal.addEventListener("click", () => {
-    cardFormValidator.disableButton();
-    addCardPopup.open();
-  });
-
-  const avatarPopup = new PopupWithForm({
-    popupSelector: ".modal_type_avatar",
-    popupSubmit: ({ name: avatar }) => {
-      handleAvatar(avatar)
-    },
-  });
-  avatarPopup.setEventListeners();
   
-  avatarModal.addEventListener("click", () => {
-    avatarFormValidator.disableButton();
-    avatarPopup.open();
-    
-  });
   
 });
 
 
+//Add Card Popup
+const addCardPopup = new PopupWithForm({
+  popupSelector: ".modal_type_add-card",
+  popupSubmit: (data) => {
+    api.addCard(data)
+    .then((res) => {
+      const newCard = renderCard(res);
+      cardSection.addItem(newCard);
+    }) .catch(err => console.log(err));
+  },
+});
+addCardPopup.setEventListeners();
+addModal.addEventListener("click", () => {
+  cardFormValidator.disableButton();
+  addCardPopup.open();
+});
+
+
+//Avatar Popup
+const avatarPopup = new PopupWithForm({
+  popupSelector: ".modal_type_avatar",
+  popupSubmit: ({ name: avatar }) => {
+    handleAvatar(avatar)
+  },
+});
+avatarPopup.setEventListeners();
+
+avatarModal.addEventListener("click", () => {
+  avatarFormValidator.disableButton();
+  avatarPopup.open();
+  
+});
 
 
 let userId;
@@ -191,37 +201,30 @@ function handleAvatar(avatar){
   api.setUserAvatar(avatar)
   .then(res => {
     profileAvatar.src = res.avatar;
-    loadingModal(false, profileAvatar);
     avatarPopup.close();
   })
-  .catch(err => console.log(err));
+  .finally(() => {
+    loadingModal(false, profileAvatar);
+  })
 }
 
 
 // Delete Card Popup
-const deletePopup = new PopupWithForm({
+const deletePopup = new PopupWithConfirm({
   popupSelector: ".modal_type_delete-card",
   popupSubmit: ([ cardID , element ]) => {
     event.preventDefault();
     loadingModal(true, deleteModal);
     
     api.removeCard(cardID).then(() => {
-      
-      loadingModal(false, deleteModal);
       deletePopup.close();
       element.remove();
-      
     })
-    .catch(err => console.log(err));
+    .catch(err => console.log(err))
+    .finally(() => {
+      loadingModal(false, deleteModal);
+    })
   }
 })
 deletePopup.setEventListeners();
 
-// Loading UI
-function loadingModal(isLoading, modal){
-  if(isLoading) {
-    document.querySelector('.modal__form-submit').textContent = "Saving...";
-  } else {
-    document.querySelector('.modal__form-submit').textContent = "Save";
-  }
-}

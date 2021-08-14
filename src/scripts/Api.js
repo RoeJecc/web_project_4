@@ -4,6 +4,10 @@ export default class Api {
     this._headers = headers;
   }
 
+  _checkServerResponse(){
+    res.ok ? res.json() : Promise.reject("Error" + res.statusText)
+  }
+
   getInitialCards() {
     return fetch(this._baseURL + "/cards", {
       headers: this._headers,
@@ -11,7 +15,7 @@ export default class Api {
       .then((res) =>
         res.ok ? res.json() : Promise.reject("Error" + res.statusText)
       )
-      .catch((err) => console.log(err));
+      
   }
 
   getUserInfo() {
@@ -21,7 +25,7 @@ export default class Api {
       .then((res) =>
         res.ok ? res.json() : Promise.reject("Error" + res.statusText)
       )
-      .catch((err) => console.log(err));
+      
   }
 
   getAppInfo() {
@@ -40,7 +44,7 @@ export default class Api {
       .then((res) =>
         res.ok ? res.json() : Promise.reject("Error" + res.statusText)
       )
-      .catch((err) => console.log(err));
+      
   }
 
   removeCard(cardID) {
@@ -52,7 +56,7 @@ export default class Api {
         .then((res) =>
           res.ok ? res.json() : Promise.reject("Error" + res.statusText)
         )
-        .catch((err) => console.log(err))
+        
     );
   }
 
@@ -65,7 +69,7 @@ export default class Api {
         .then((res) =>
           res.ok ? res.json() : Promise.reject("Error" + res.statusText)
         )
-        .catch((err) => console.log(err))
+        
     );
   }
 
@@ -78,7 +82,7 @@ export default class Api {
         .then((res) =>
           res.ok ? res.json() : Promise.reject("Error" + res.statusText)
         )
-        .catch((err) => console.log(err))
+        
     );
   }
 

@@ -6,16 +6,23 @@ export default class UserInfo {
   }
 
   getUserInfo() {
-    return (this.userInfo = [
+    return this.userInfo = [
       this._name.textContent,
       this._occupation.textContent,
       this._avatar.src,
-    ]);
+    ]
+
   }
 
   setUserInfo(name, link, avatar) {
-    this._name.textContent = name;
-    this._occupation.textContent = link;
-    this._avatar.src = avatar;
+    if (name) {
+      this._name.textContent = name;
+    }
+    if (link) {
+      this._occupation.textContent = link;
+    }
+    if (avatar) {
+      this._avatar.src = avatar;
+    }
   }
 }

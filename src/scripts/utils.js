@@ -25,6 +25,15 @@ const previewImage = document.querySelector(".modal__image");
 const profileAvatar = document.querySelector(".profile__avatar");
 const avatarForm = document.querySelector(".modal__profile_avatar");
 
+// Loading UI
+function loadingModal(isLoading, modal){
+  if(isLoading) {
+    document.querySelector('.modal__form-submit').textContent = "Saving...";
+  } else {
+    document.querySelector('.modal__form-submit').textContent = "Save";
+  }
+}
+
 // Exports
 
 export {
@@ -44,5 +53,6 @@ export {
   previewModal,
   previewImage,
   escKey,
-  avatarModal
+  avatarModal,
+  loadingModal
 }
