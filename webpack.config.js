@@ -18,7 +18,7 @@ module.exports = {
   stats: { children: true },
   mode: 'development',
   devServer: {
-    contentBase: path.resolve(__dirname, './dist'),
+    contentBase: path.resolve(__dirname, './src'),
     compress: true,
     port: 8080,
     open: true
