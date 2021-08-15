@@ -10,7 +10,7 @@ module.exports = {
     main: './src/pages/index.js'
   },
   output: {
-    path: path.resolve(__dirname, 'dist'),
+    path: path.resolve(__dirname, './src'),
     filename: 'main.js',
     publicPath: ''
   },
